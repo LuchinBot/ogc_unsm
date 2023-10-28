@@ -1,0 +1,146 @@
+.navbar-container {
+    background-color: #009b45; /* Cambia el color de fondo según tu preferencia */
+    padding: 15px; /* Agrega relleno para separar el contenido del borde */
+    max-width: 100%;
+    height: 60px;
+    
+    
+  }
+
+  .navbar-container {
+    display: flex;
+    justify-content: center; /* Centra horizontalmente los elementos */
+    align-items: center; /* Centra verticalmente los elementos (opcional) */
+    gap: 190px; /* Espacio horizontal entre los elementos (ajusta según sea necesario) */
+  }
+  @media (max-width: 768px) {
+  .nav-item {
+    /* Estilos adicionales para los elementos de navegación */
+    /* Por ejemplo, puedes personalizar el color de fondo, el texto, etc. */
+    padding: 10px 20px; /* Espacio interno para separar los elementos */
+    border-radius: 5px; /* Bordes redondeados */
+    text-decoration: none; /* Elimina la decoración de texto de los enlaces */
+    display: block;
+  }
+  .dropdown-menu {
+    position: static; /* Cambiar la posición para el modo móvil */
+    width: 100%; /* Asegurarse de que el menú desplegable ocupe todo el ancho */
+  }
+  }
+  .tarjeta{
+    margin-right: 10%;
+  }
+  .imagen-container{
+    
+  margin-right: 79%;
+  display: flex;
+  align-items: center;
+  }
+  .titulo{
+margin-left: 500px;
+white-space: nowrap;
+  
+  }
+.contacto{
+  width: 100%; /* Ancho en píxeles */
+      height: 20px; /* Altura en píxeles */
+      background-color: #00793d; /* Color de fondo */
+      padding: 15px; /* Espacio interno de 20 píxeles */
+      text-align: left; /* Texto centrado */
+      display: flex;
+      align-items: center;
+}
+.iconos {
+  padding: 4%; /* Espacio interno de 20 píxeles */
+  display: flex;
+  margin-left: 1%;
+  justify-content: space-between;
+}
+.container {
+  display: flex;
+  flex-wrap: wrap; /* Envuelve los elementos en pantallas pequeñas */
+  margin-top: 100px;
+  justify-content: space-between;
+}
+
+.table-container {
+  flex: 1;
+  margin-right: 0;
+  margin-bottom: 0; /* Espacio entre los elementos (ajusta según sea necesario) */
+}
+
+/* Ajusta el estilo de las tablas según sea necesario */
+table {
+  max-width: calc(50% - 10px);
+  margin-bottom: 0;
+}
+
+/* Media query para pantallas pequeñas */
+@media (max-width: 768px) {
+  .table-container {
+    flex-basis: 100%; /* Ocupa todo el ancho en pantallas pequeñas */
+    margin-right: 0; /* Elimina el margen derecho en pantallas pequeñas */
+  }
+}
+.mi-div {
+  border: 1px solid black; /* Borde simple de 1 píxel de ancho y color negro */
+  padding: 0px; /* Espacio interno para el contenido */
+  width: 90%; /* Ancho del div */
+  margin-left: 5%;
+  height: 780px;
+}
+
+.universidad {
+  width: 60%; /* Ancho deseado */
+  height: 220px; /* Altura deseada (ajusta según tus necesidades) */
+}
+.mi-contenedorr {
+  display: flex;
+  justify-content: center; /* Centra horizontalmente */
+  align-items: center; /* Centra verticalmente */
+  margin-top: 29px;
+}
+
+
+.contenedor-titulo{
+margin-left: 380px;
+  margin-top: 60px;
+}
+.carousel-item {
+  width: 10px; /* Ancho fijo */
+  height: 400px; /* Alto fijo */
+}
+
+.carousel-inner {
+  max-width: 1600px; /* Ajusta el valor a tu preferencia, por ejemplo, 600px */
+  margin: 0 auto; /* Centra el contenedor horizontalmente en la página */
+}
+.carousel-control-prev,
+.carousel-control-next {
+    background-color: #FF0000; /* Cambia '#FF0000' al color que desees */
+    color: red; /* Cambia '#FFFFFF' al color de fuente que desees */
+}
+
+.carousel-control-prev:hover,
+.carousel-control-next:hover {
+    background-color: #FF3333; /* Cambia el color al pasar el mouse */
+}
+
+footer {
+  background-color: #002811; /* Color de fondo */
+  color: #fff; /* Color del texto */
+  padding: 20px; /* Espacio interno para separar el contenido del borde */
+  margin: 0 auto ;
+  height: 80px;
+}
+
+/* Estilo cuando el cursor pasa por encima del texto */
+.resaltable:hover {
+  background-color: white; /* Cambia el fondo a amarillo */
+  color: green; /* Cambia el color de texto si lo deseas */
+}
+
+.opacidad:hover {
+ /* La opacidad vuelve a 1 al pasar el cursor por encima */
+  color: red;
+}

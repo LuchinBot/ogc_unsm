@@ -1,0 +1,45 @@
+body{
+    font-family: 'Roboto', sans-serif !important;
+    margin: 0;
+    padding: 0;
+    font-size: 12px !important;
+}
+
+a{
+    text-decoration: none !important;
+}
+/*Estilos para la pagina*/
+.navbar-nav .nav-item .nav-link{
+    font-weight: 400;
+    padding: 8px 20px 8px 20px !important;
+    color: #5e5e5e;
+    text-transform:uppercase !important;
+}
+.navbar-nav .nav-item .nav-link:hover{
+    color: #fff;
+    background-color: #238c2a;
+    text-transform:uppercase !important;
+}
+.enlaces-top .nav-item a{
+    color: #CCE4D8;
+    margin: 1px 10px 1px 10px;
+    font-weight: 600;
+    text-transform:uppercase !important;
+}
+.contact-a {
+    width: 20px;
+    height: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;    
+    border-radius: 50px !important;
+
+}
+.container-noticias{
+    box-sizing: border-box;
+}
+/*Estilos del footer*/
+.footer a img{
+    width: 55px;
+    height: 55px;
+}
