@@ -38,7 +38,7 @@
                             <div class="col-6 border d-flex justify-content-center align-items-center" style="height:200px;box-shadow: rgba(0, 0, 0, 0.05) 0px 6px 24px 0px, rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;">
                                 <a href="https://enlinea.sunedu.gob.pe/">
                                     <div class="w-100 bg-white py-3 fw-bold text-success">
-                                        <span>Noticia 1</span>
+                                        <span>Noticia 1.1</span>
                                     </div>
                                 </a>
                             </div>
