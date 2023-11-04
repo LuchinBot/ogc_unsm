@@ -12,17 +12,17 @@
             <span class="text-white mt-1 fw-bold">SOCIALÍZATE</span>
             <a href="https://www.facebook.com/unsmperu" class="text-success">
                 <div class="contact-a px-1 mx-2 bg-white">
-                    <i class="fa fa-facebook"></i>
+                    <i class="fa-brands fa-facebook"></i>
                 </div>
             </a>
             <a href="https://www.facebook.com/unsmperu" class="text-success">
                 <div class="contact-a px-1 mx-2 bg-white">
-                    <i class="fa fa-twitter"></i>
+                    <i class="fa-brands fa-twitter"></i>
                 </div>
             </a>
             <a href="https://www.facebook.com/unsmperu" class="text-success">
                 <div class="contact-a px-1 mx-2 bg-white">
-                    <i class="fa fa-youtube"></i>
+                    <i class="fa-brands fa-youtube"></i>
                 </div>
             </a>
         </div>

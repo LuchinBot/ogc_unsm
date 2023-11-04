@@ -1,18 +1,22 @@
-<?php include "public/layouts/header.php"; ?>
+<?php
+$title = "OGC | UNSM";
+include "public/layouts/header.php";
+
+$stmt = $base->prepare('select * from empresa ');
+$data = $stmt->execute();
+$data = $stmt->fetch(PDO::FETCH_ASSOC);
+?>
 <?php include "public/layouts/navbar.php"; ?>
 
 <section class="h-100 mb-3">
     <div class="container-fluid p-0">
-        <div id="carouselExampleInterval" class="carousel slide" data-bs-ride="carousel" style="height: 500px !important; overflow: hidden;">
+        <div id="carouselExampleInterval" class="carousel slide" data-bs-ride="carousel" style="height: 550px !important; overflow: hidden;">
             <div class="carousel-inner">
                 <div class="carousel-item active">
-                    <img src="<?= $url ?>src/img/slider_unsm.jpg" style="margin-top:-150px !important;" class="d-block w-100" alt="...">
+                    <img src="<?= $url.$data['slider_1'] ?>" style="margin-top:-180px !important;" class="d-block w-100" alt="...">
                 </div>
                 <div class="carousel-item">
-                    <img src="<?= $url ?>src/img/notice_1.jpg" style="margin-top:-150px !important;" class="d-block w-100" alt="...">
-                </div>
-                <div class="carousel-item">
-                    <img src="<?= $url ?>src/img/partners.jpg" style="margin-top:-20px !important;" class="d-block w-100" alt="...">
+                    <img src="<?= $url.$data['slider_2'] ?>" style="margin-top:-180px !important;" class="d-block w-100" alt="...">
                 </div>
             </div>
             <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleInterval" data-bs-slide="prev">

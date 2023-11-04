@@ -1,19 +1,19 @@
-<div class="top-navbar container-fluid py-2 px-5 bg-success">
+<div class="top-navbar  container-fluid py-2 px-5 bg-success">
     <div class="container col-12 d-flex">
         <div class="contactos-top col-6 d-flex justify-content-start align-items-center">
             <a href="https://www.facebook.com/unsmperu" class="text-success">
                 <div class="contact-a px-1 mx-2 bg-white">
-                    <i class="fa fa-facebook"></i>
+                    <i class="fa-brands fa-facebook"></i>
                 </div>
             </a>
             <a href="https://www.facebook.com/unsmperu" class="text-success">
                 <div class="contact-a px-1 mx-2 bg-white">
-                    <i class="fa fa-twitter"></i>
+                    <i class="fa-brands fa-twitter"></i>
                 </div>
             </a>
             <a href="https://www.facebook.com/unsmperu" class="text-success">
                 <div class="contact-a px-1 mx-2 bg-white">
-                    <i class="fa fa-youtube"></i>
+                    <i class="fa-brands fa-youtube"></i>
                 </div>
             </a>
             <a href="tel:+51042525540" class="text-success">
@@ -34,9 +34,9 @@
         </div>
     </div>
 </div>
-<nav class="navbar navbar-expand-lg bg-body-tertiary bg-white" style="box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;">
+<nav class="navbar sticky-top navbar-expand-lg bg-body-tertiary bg-white" style="box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;">
     <div class="container py-2">
-        <a class="navbar-brand d-flex" href="#">
+        <a class="navbar-brand d-flex" href="<?= $url ?>">
             <img src="<?= $url ?>src/img/logo_ogc.png" style="width:120px">
             <div class="row ms-2 text-success fs-6">
                 <span class="fw-bold mt-2">OFICINA DE GESTIÓN </span>
@@ -49,10 +49,13 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0 col-12 justify-content-end">
                 <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="#">Home</a>
+                    <a class="nav-link active" aria-current="page" href="<?= $url ?>">Home</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Nosotros</a>
+                    <a class="nav-link" href="<?= $url ?>public/view/nosotros">Nosotros</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="<?= $url ?>public/view/personal">Personal</a>
                 </li>
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">

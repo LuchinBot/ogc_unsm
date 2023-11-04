@@ -1,45 +1,132 @@
-body{
+body {
     font-family: 'Roboto', sans-serif !important;
     margin: 0;
     padding: 0;
     font-size: 12px !important;
 }
 
-a{
+p {
+    font-weight: 300 !important;
+    font-size: 15px !important;
+}
+
+a {
     text-decoration: none !important;
 }
+
 /*Estilos para la pagina*/
-.navbar-nav .nav-item .nav-link{
+.navbar-nav .nav-item .nav-link {
     font-weight: 400;
     padding: 8px 20px 8px 20px !important;
     color: #5e5e5e;
-    text-transform:uppercase !important;
+    text-transform: uppercase !important;
 }
-.navbar-nav .nav-item .nav-link:hover{
+
+.navbar-nav .nav-item .nav-link:hover {
     color: #fff;
     background-color: #238c2a;
-    text-transform:uppercase !important;
+    text-transform: uppercase !important;
 }
-.enlaces-top .nav-item a{
+
+.enlaces-top .nav-item a {
     color: #CCE4D8;
     margin: 1px 10px 1px 10px;
     font-weight: 600;
-    text-transform:uppercase !important;
+    text-transform: uppercase !important;
 }
+
 .contact-a {
     width: 20px;
     height: 20px;
     display: flex;
     justify-content: center;
-    align-items: center;    
+    align-items: center;
     border-radius: 50px !important;
 
 }
-.container-noticias{
+
+.container-noticias {
     box-sizing: border-box;
 }
+
 /*Estilos del footer*/
-.footer a img{
+.footer a img {
     width: 55px;
     height: 55px;
+}
+
+.personal {
+    position: relative;
+    box-shadow: rgba(0, 0, 0, 0.09) 0px 3px 12px;
+    border-radius: 10px;
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 150px;
+}
+
+.personal-title {
+    font-size: 15px;
+    background-color: #00C564;
+    padding: 10px;
+    font-weight: 600
+}
+
+.personal .profile {
+    text-align: left;
+}
+
+.personal .profile img {
+    border: 5px solid #00C564;
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    margin-top: -100px;
+}
+
+.personal .profile p {
+    width: 80% !important;
+    font-size: 20px !important;
+    font-weight: 800 !important;
+    margin: 10px 0px 0px 0px !important;
+}
+
+.personal .profile span {
+    font-size: 15px !important;
+    font-weight: 400 !important;
+    color: #0095AB;
+}
+
+.personal .social {
+    box-sizing: border-box;
+    position: absolute;
+    border-radius: 50px;
+    overflow: hidden;
+    margin: 10px;
+    background-color: #00C564;
+    bottom: 0;
+    right: 0;
+}
+
+.personal .social .links {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    box-sizing: border-box;
+    padding: 0px;
+}
+
+.personal .social .a-links {
+    font-size: 17px;
+    width: 100%;
+    padding: 20px;
+}
+
+.personal .social .i-links {
+    font-size: 17px;
+    color: #fff;
+    padding: 20px;
+    background-color: #0095AB;
+    border-radius: 50px;
+    display: flex;
+    width: 100%;
 }
