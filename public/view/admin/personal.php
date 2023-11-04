@@ -28,7 +28,7 @@ inner join cargo as c on (c.idcargo=p.idcargo)');
 $data = $stmt->execute();
 $data = $stmt->fetchAll(PDO::FETCH_OBJ);
 
-$stmt = $base->prepare('SELECT * from persona_natural pn left join personal as p
+$stmt = $base->prepare('SELECT pn.idpersona_natural,pn.dni,pn.nombres,pn.apellidos from persona_natural pn left join personal as p
 on (p.idpersona_natural = pn.idpersona_natural ) where p.idpersona_natural IS NULL');
 $data2 = $stmt->execute();
 $data2 = $stmt->fetchAll(PDO::FETCH_OBJ);
