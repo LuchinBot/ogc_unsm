@@ -38,7 +38,7 @@ $data = $stmt->fetch(PDO::FETCH_ASSOC);
                     <img src="<?= $url ?>src/img/default/vision.png" class="my-3" style="width: 100px;">
                 </div>
                 <div class="ms-4 text-start">
-                    <h4 style="font-weight: 600;color: #5B627D">Nuestra Misión</h4>
+                    <h4 style="font-weight: 600;color: #5B627D">Nuestra Visión</h4>
                     <p class="py-1"><?=$data['vision']?></p>
                 </div>
             </div>
