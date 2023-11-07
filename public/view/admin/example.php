@@ -1,5 +1,6 @@
 <?php
 $title = "OGC | UNSM";
+$title_page = "Nosotros";
 include "../../layouts/header_admin.php";
 
 if (isset($_POST['update'])) {
@@ -16,13 +17,13 @@ if (isset($_POST['update'])) {
     $imagenUrl = "src/img/uploads/" . $_FILES['portada_1']['name'];
     move_uploaded_file($_FILES['portada_1']['tmp_name'], $imagen);
 
-    $stmt = $base->prepare('UPDATE empresa SET
+    $stmt = $base->prepare('UPDATE nosotros SET
                             titulo = ?,
                             descripcion=?,
                             mision = ?,
                             vision=?,
                             portada_1=?
-                            WHERE idempresa = 1');
+                            WHERE idnosotros = 1');
     $result = $stmt->execute(array(
       $a,
       $b,
@@ -38,13 +39,13 @@ if (isset($_POST['update'])) {
     $imagenUrl = "src/img/uploads/" . $_FILES['portada_2']['name'];
     move_uploaded_file($_FILES['portada_2']['tmp_name'], $imagen);
 
-    $stmt = $base->prepare('UPDATE empresa SET
+    $stmt = $base->prepare('UPDATE nosotros SET
                             titulo = ?,
                             descripcion=?,
                             mision = ?,
                             vision=?,
                             portada_2=?
-                            WHERE idempresa = 1');
+                            WHERE idnosotros = 1');
     $result = $stmt->execute(array(
       $a,
       $b,
@@ -60,13 +61,13 @@ if (isset($_POST['update'])) {
     $imagenUrl = "src/img/uploads/" . $_FILES['slider_1']['name'];
     move_uploaded_file($_FILES['slider_1']['tmp_name'], $imagen);
 
-    $stmt = $base->prepare('UPDATE empresa SET
+    $stmt = $base->prepare('UPDATE nosotros SET
                             titulo = ?,
                             descripcion=?,
                             mision = ?,
                             vision=?,
                             slider_1=?
-                            WHERE idempresa = 1');
+                            WHERE idnosotros = 1');
     $result = $stmt->execute(array(
       $a,
       $b,
@@ -82,13 +83,13 @@ if (isset($_POST['update'])) {
     $imagenUrl = "src/img/uploads/" . $_FILES['slider_2']['name'];
     move_uploaded_file($_FILES['slider_2']['tmp_name'], $imagen);
 
-    $stmt = $base->prepare('UPDATE empresa SET
+    $stmt = $base->prepare('UPDATE nosotros SET
                             titulo = ?,
                             descripcion=?,
                             mision = ?,
                             vision=?,
                             slider_2=?
-                            WHERE idempresa = 1');
+                            WHERE idnosotros = 1');
     $result = $stmt->execute(array(
       $a,
       $b,
@@ -100,12 +101,12 @@ if (isset($_POST['update'])) {
   }
   
   if($_FILES['portada_1']['name'] == "" && $_FILES['portada_2']['name'] == "" && $_FILES['slider_1']['name'] == "" && $_FILES['slider_2']['name'] == ""){
-    $stmt = $base->prepare('UPDATE empresa SET
+    $stmt = $base->prepare('UPDATE nosotros SET
                             titulo = ?,
                             descripcion=?,
                             mision = ?,
                             vision=?
-                            WHERE idempresa = 1');
+                            WHERE idnosotros = 1');
     $result = $stmt->execute(array(
       $a,
       $b,
@@ -121,7 +122,7 @@ if (isset($_POST['update'])) {
   }
 }
 
-$stmt = $base->prepare('select * from empresa ');
+$stmt = $base->prepare('select * from nosotros ');
 $data = $stmt->execute();
 $data = $stmt->fetch(PDO::FETCH_ASSOC);
 
@@ -131,14 +132,14 @@ $data = $stmt->fetch(PDO::FETCH_ASSOC);
   <!-- Content Header (Page header) -->
   <div class="content-header">
     <div class="container-fluid">
-      <div class="row">
+      <div class="row align-items-center">
         <div class="col-sm-6">
-          <h4 class="m-0" style="font-weight: 700; color: #5B627D">Datos generales</h4>
+          <h5 class="m-0 text-dark" style="font-weight: 600;"><?=$title_page?></h5>
         </div>
         <div class="col-sm-6">
           <ol class="breadcrumb float-sm-right">
             <li class="breadcrumb-item"><a href="<?= $url ?>public/view/admin/datos">Inicio</a></li>
-            <li class="breadcrumb-item active">Datos</li>
+            <li class="breadcrumb-item active"><?=$title_page?></li>
           </ol>
         </div>
       </div>
@@ -146,14 +147,14 @@ $data = $stmt->fetch(PDO::FETCH_ASSOC);
   </div>
   <!-- Main content -->
   <section class="content mb-5">
-    <div class="container-fluid">
-      <p class="text-secondary">
-        <i class="fa fa-info-circle"></i>
-        En esta sección podrás editar la información o datos generales de la empresa, cualquier cambio estará bajo su responsabilidad.
-        <a href="<?= $url ?>public/view/nosotros" target="_blank" class="font-weight-bold">Visualizar cambios <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+    <div class="container-fluid m-2 p-0 bg-white">
+      <p class="text-secondary bg-dark border-bottom px-4 py-2">
+        <i class="fa fa-info-circle text-warning"></i>
+        Todos los cambios los puedes verificar
+        <a href="<?= $url ?>public/view/nosotros" target="_blank" class="font-weight-bold text-warning">aquí <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
       </p>
 
-      <form method="post" class="bg-white p-4" enctype="multipart/form-data">
+      <form method="post" class="bg-white px-4 py-2" enctype="multipart/form-data">
         <div class="form-group">
           <label>Titulo</label>
           <input type="text" name="titulo" class="form-control" value="<?= $data['titulo'] ?>" required>

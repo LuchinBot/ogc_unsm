@@ -1,22 +1,30 @@
 <?php
 $title = "OGC | UNSM";
+$active1 = "active";
+$active2 = "";
+$active3 = "";
 include "public/layouts/header.php";
 
-$stmt = $base->prepare('select * from empresa ');
+$stmt = $base->prepare('select * from nosotros ');
 $data = $stmt->execute();
 $data = $stmt->fetch(PDO::FETCH_ASSOC);
+
+$stmt = $base->prepare('select * from enlace where estado_enlace = 1');
+$data2 = $stmt->execute();
+$data2 = $stmt->fetchAll(PDO::FETCH_OBJ);
+
 ?>
 <?php include "public/layouts/navbar.php"; ?>
 
 <section class="h-100 mb-3">
     <div class="container-fluid p-0">
-        <div id="carouselExampleInterval" class="carousel slide" data-bs-ride="carousel" style="height: 550px !important; overflow: hidden;">
+        <div id="carouselExampleInterval" class="carousel slide carousel-fade slider" data-bs-ride="carousel" style="height: 450px; overflow: hidden;">
             <div class="carousel-inner">
                 <div class="carousel-item active">
-                    <img src="<?= $url.$data['slider_1'] ?>" style="margin-top:-180px !important;" class="d-block w-100" alt="...">
+                    <img src="<?= $url ?>src/img/default/slider1.jpg" class="d-block w-100" alt="...">
                 </div>
-                <div class="carousel-item">
-                    <img src="<?= $url.$data['slider_2'] ?>" style="margin-top:-180px !important;" class="d-block w-100" alt="...">
+                <div class="carousel-item" >
+                    <img src="<?= $url?>src/img/default/slider2.jpg"  class="d-block w-100" alt="...">
                 </div>
             </div>
             <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleInterval" data-bs-slide="prev">
@@ -123,57 +131,19 @@ $data = $stmt->fetch(PDO::FETCH_ASSOC);
             <h4 class="text-white">Enlaces de interés</h4>
             <hr class="text-white">
             <div class="container text-center p-0">
-                <div class="row">
-                    <div class="col rounded">
-                        <a href="https://enlinea.sunedu.gob.pe/">
-                            <div class="w-100 bg-white py-3 fw-bold text-success">
-                                <i class="fa fa-graduation-cap"></i>
-                                <span>SUNEDU</span>
-                            </div>
-                        </a>
-                    </div>
-                    <div class="col rounded">
-                        <a href="https://icacit.org.pe/web/es/">
-                            <div class="w-100 bg-white py-3 fw-bold text-success">
-                                <i class="fa fa-institution"></i>
-                                <span>ICATIC</span>
-                            </div>
-                        </a>
-                    </div>
-                    <div class="col rounded">
-                        <a href="https://www.gob.pe/sineace">
-                            <div class="w-100 bg-white py-3 fw-bold text-success">
-                                <i class="fa fa-institution"></i>
-                                <span>SINEACE</span>
-                            </div>
-                        </a>
-                    </div>
-                </div>
-                <div class="row mt-2">
-                    <div class="col rounded">
-                        <a href="https://enlinea.sunedu.gob.pe/">
-                            <div class="w-100 bg-white py-3 fw-bold text-success">
-                                <i class="fa fa-graduation-cap"></i>
-                                <span>SUNEDU</span>
-                            </div>
-                        </a>
-                    </div>
-                    <div class="col rounded">
-                        <a href="https://icacit.org.pe/web/es/">
-                            <div class="w-100 bg-white py-3 fw-bold text-success">
-                                <i class="fa fa-institution"></i>
-                                <span>ICATIC</span>
-                            </div>
-                        </a>
-                    </div>
-                    <div class="col rounded">
-                        <a href="https://www.gob.pe/sineace">
-                            <div class="w-100 bg-white py-3 fw-bold text-success">
-                                <i class="fa fa-institution"></i>
-                                <span>SINEACE</span>
-                            </div>
-                        </a>
-                    </div>
+                <div class="row flex-wrap">
+                    <?php foreach($data2 as $v1):?>
+                        <div class="col-md-4 p-2">
+                        <div class="col rounded">
+                            <a href="<?=$v1->url_enlace?>" target="_blank">
+                                <div class="w-100 bg-white py-3 fw-bold text-success">
+                                    <?=$v1->icono_enlace?>
+                                    <span><?=$v1->titulo_enlace?></span>
+                                </div>
+                            </a>
+                        </div>
+                        </div>
+                    <?php endforeach;?>
                 </div>
             </div>
         </div>

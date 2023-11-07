@@ -1,5 +1,5 @@
 <?php
-$title = "OGC | UNSM";
+$title_page = "Inicio";
 ?>
 <?php include "../../layouts/header_admin.php"; ?>
 <?php include "../../layouts/navbar_admin.php"; ?>

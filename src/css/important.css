@@ -1,5 +1,6 @@
 /*GENERAL*/
 body {
+    text-transform: uppercase !important;
     font-family: 'Lato', sans-serif;
     font-size: 14px !important;
     user-select: none;
@@ -23,11 +24,23 @@ button {
     border-radius: 0 !important;
     border: 0 !important;
 }
+.dataTables_length *{
+    font-weight: 400 !important;
+}
+.dataTables_filter *{
+    font-weight: 400 !important;
+}
 p{
-    font-size: 13px !important;
+    font-size: 11px !important;
     font-weight: 200 !important;
 }
+.modal-title{
+    font-size: 14px !important;
+}
+.form-label{
+    font-size: 10px !important;
 
+}
 button:focus {
     outline: none !important;
     box-shadow: none !important;
@@ -91,10 +104,11 @@ button:focus {
 
 .main-login {
     box-shadow: rgba(0, 0, 0, 0.1) 0px 10px 50px;
-    border-radius: 20px;
+    border-radius: 10px;
     position: relative;
     width: 350px;
     z-index: 100;
+    border: 3px solid #21854671;
 }
 
 .scroll-login {
@@ -113,7 +127,7 @@ button:focus {
     display: flex;
     align-items: center;
     justify-content: center;
-    background-color: #007CFF;
+    background-color: #218545;
     font-size: 1.5rem;
 }
 
@@ -133,11 +147,11 @@ button:focus {
 }
 
 .form-control-login {
+    text-align: center;
     text-transform: uppercase !important;
     width: 100%;
-    padding: 10px 5px 10px 30px;
+    padding: 10px 5px 10px 5px;
     border: none;
-    text-align: left;
     color: #33454C;
     border-bottom: 1px solid #33454C;
     animation: changeBorderColor 1s ease-in-out infinite;

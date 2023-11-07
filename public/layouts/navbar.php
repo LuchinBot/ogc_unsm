@@ -21,14 +21,11 @@
                     <i class="fa fa-phone"></i>
                 </div>
             </a>
-            <span class="text-white">(+51) (042) 52 5540 | informes@unsm.edu.pe</span>
+            <span class="text-white informe-navbar">(+51) (042) 52 5540 | informes@unsm.edu.pe</span>
         </div>
         <div class="enlaces-top col-6 d-flex justify-content-end align-items-center">
             <ul class="d-flex m-0 p-0" style="list-style: none !important;">
-                <li class="nav-item"><a href="">campus virtual</a></li>
-                <li class="nav-item"><a href="">sdg</a></li>
-                <li class="nav-item"><a href="">servicios</a></li>
-                <li class="nav-item"><a href="">control interno</a></li>
+                <li class="nav-item"><a href="<?=$url?>login">ADMINISTRACIÓN</a></li>
                 <li class="nav-item"><a href="" class="me-0">contacto</a></li>
             </ul>
         </div>
@@ -37,27 +34,23 @@
 <nav class="navbar sticky-top navbar-expand-lg bg-body-tertiary bg-white" style="box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;">
     <div class="container py-2">
         <a class="navbar-brand d-flex" href="<?= $url ?>">
-            <img src="<?= $url ?>src/img/logo_ogc.png" style="width:120px">
-            <div class="row ms-2 text-success fs-6">
-                <span class="fw-bold mt-2">OFICINA DE GESTIÓN </span>
-                <span class="fw-bold" style="margin-top: -17px">DE LA CALIDAD </span>
-            </div>
+            <img src="<?= $url ?>src/img/default/logo_ogc_unsm.svg" style="width:100%">
         </a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
+            <i class="fa fa-bars"></i>
         </button>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0 col-12 justify-content-end">
-                <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="<?= $url ?>">Home</a>
+                <li class="nav-item me-2">
+                    <a class="nav-link <?=$active1?>" aria-current="page" href="<?= $url ?>">Home</a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="<?= $url ?>public/view/nosotros">Nosotros</a>
+                <li class="nav-item me-2">
+                    <a class="nav-link <?=$active2?>" href="<?= $url ?>nosotros">Nosotros</a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="<?= $url ?>public/view/personal">Personal</a>
+                <li class="nav-item me-2">
+                    <a class="nav-link <?=$active3?>" href="<?= $url ?>personal">Personal</a>
                 </li>
-                <li class="nav-item dropdown">
+                <li class="nav-item me-2 dropdown">
                     <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                         Eventos
                     </a>

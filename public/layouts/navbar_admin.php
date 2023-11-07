@@ -14,16 +14,16 @@
       </a>
     </li>
     <li class="nav-item">
-      <a class="nav-link" data-widget="control-sidebar" data-controlsidebar-slide="true" href="#" role="button">
-        <i class="fa fa-th-large"></i>
+      <a class="nav-link" href="<?=$url?>logout">
+        <i class="fa fa-sign-out"></i>
       </a>
     </li>
   </ul>
 </nav>
-<aside class="main-sidebar elevation-4 p-0" style="background-color: #28A745;">
+<aside class="main-sidebar bg-dark elevation-4 p-0">
   <!-- Brand Logo -->
   <a href="<?= $url ?>public/view/admin" class="brand-link border-bottom bg-dark">
-    <img src="<?= $url ?>src/img/logo_ogc.png" alt="AdminLTE Logo" style="opacity: .8; width: 40px">
+    <img src="<?= $url ?>src/img/default/logo_ogc.png" alt="AdminLTE Logo" style="opacity: .8; width: 40px">
     <span class="brand-text text-white font-weight-light">OGC <strong>DASHBOARD</strong></span>
   </a>
 
@@ -32,11 +32,11 @@
     <!-- Sidebar user panel (optional) -->
     <div class="user-panel mt-3 pb-3 mb-3 d-flex border-bottom">
       <div class="image">
-        <img src="<?= $url ?>src/img/userv2.jpg" class="img-circle elevation-2 mt-1" alt="User Image">
+        <img src="<?= $url ?>src/img/default/user.jpg" class="img-circle elevation-2 mt-1" alt="User Image">
       </div>
       <div class="info" style="line-height: 1.2;">
-        <span href="#" class="d-block text-white" style="font-size: 17px;font-weight: 600">Takeshi Inoue</span>
-        <span style="font-size: 12px; color: #F1F1F1;font-weight: 200">Administrador</span>
+        <span href="#" class="d-block text-white" style="font-size: 14px;font-weight: 600"><?=$nameUser.' '.$apellidoUser?></span>
+        <span style="font-size: 10px; color: #F1F1F1;font-weight: 200"><?=$userData['descripcion_perfil']?></span>
       </div>
     </div>
 
@@ -52,10 +52,10 @@
           </a>
         </li>
         <li class="nav-item">
-          <a href="<?= $url ?>public/view/admin/datos" class="nav-link">
+          <a href="<?= $url ?>public/view/admin/nosotros" class="nav-link">
             <i class="nav-icon fa fa-institution"></i>
             <p>
-              Datos generales
+              Nosotros generales
             </p>
           </a>
         </li>
@@ -63,7 +63,7 @@
           <a href="<?= $url ?>public/view/admin/noticias" class="nav-link">
             <i class="nav-icon fa fa-newspaper"></i>
             <p>
-              Nuetras noticias
+              Nuestras noticias
             </p>
           </a>
         </li>
@@ -85,33 +85,39 @@
           </a>
           <ul class="nav nav-treeview">
             <li class="nav-item">
-              <a href="<?= $url ?>public/view/admin/" class="nav-link active">
+              <a href="<?= $url ?>public/view/admin/" class="nav-link">
                 <i class="fa fa-id-card nav-icon"></i>
                 <p>Perfiles</p>
               </a>
             </li>
             <li class="nav-item">
-              <a href="<?= $url ?>public/view/admin/" class="nav-link active">
+              <a href="<?= $url ?>public/view/admin/" class="nav-link">
                 <i class="fa fa-user nav-icon"></i>
                 <p>Usuarios</p>
               </a>
             </li>
             <li class="nav-item">
-              <a href="<?= $url ?>public/view/admin/" class="nav-link active">
+              <a href="<?= $url ?>public/view/admin/" class="nav-link">
                 <i class="fa fa-user nav-icon"></i>
                 <p>Personas Naturales</p>
               </a>
             </li>
             <li class="nav-item">
-              <a href="<?= $url ?>public/view/admin/" class="nav-link active">
+              <a href="<?= $url ?>public/view/admin/" class="nav-link">
                 <i class="fa fa-user nav-icon"></i>
                 <p>Cargos</p>
               </a>
             </li>
             <li class="nav-item">
-              <a href="<?= $url ?>public/view/admin/personal" class="nav-link active">
+              <a href="<?= $url ?>public/view/admin/personal" class="nav-link">
                 <i class="fa fa-user nav-icon"></i>
                 <p>Personal</p>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a href="<?= $url ?>public/view/admin/enlaces" class="nav-link">
+                <i class="fa fa-user nav-icon"></i>
+                <p>Enlaces</p>
               </a>
             </li>
           </ul>

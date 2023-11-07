@@ -12,7 +12,7 @@ $url = "http://localhost/ogc_unsm/";
   <link rel="icon" href="<?=$url?>src/img/logo_ogc.png" type="image/icon">
   <title><?=$title?></title>
   <link href="<?= $url ?>src/css/styles.css" rel="stylesheet">
-  <link href="<?= $url ?>src/css/bootstrap.min.css" rel="stylesheet">
+  <link href="<?= $url ?>src/css/other/bootstrap.min.css" rel="stylesheet">
   <link href="<?= $url ?>src/css/fontawesome/css/fontawesome.min.css" rel="stylesheet">
   <link href="<?= $url ?>src/css/fontawesome/css/all.min.css" rel="stylesheet">
   <link href="<?= $url ?>src/css/fontawesome/css/solid.min.css" rel="stylesheet">

@@ -13,21 +13,39 @@ p {
 a {
     text-decoration: none !important;
 }
-
 /*Estilos para la pagina*/
 .navbar-nav .nav-item .nav-link {
-    font-weight: 400;
     padding: 8px 20px 8px 20px !important;
-    color: #5e5e5e;
+    text-transform: uppercase !important;
+    color: #238c2a !important;
+    font-weight: 400 !important;
+    font-size: 14px !important;
+    border-bottom: 2px solid #fff;
+    transition: 0.2s;
+    border-bottom-left-radius: 10px;
+    border-top-right-radius: 10px;
+}
+.navbar-nav .nav-item .nav-link.active {
+    color: #fff !important;
+    background-color: #00C564;
+    border-bottom: 2px solid #238c2a;
     text-transform: uppercase !important;
 }
 
 .navbar-nav .nav-item .nav-link:hover {
-    color: #fff;
-    background-color: #238c2a;
+    color: #fff !important;
+    background-color: #00C564;
+    border-bottom: 2px solid #238c2a;
     text-transform: uppercase !important;
 }
-
+.navbar-toggler:focus{
+    border:  none !important;
+    box-shadow: none !important;
+}
+.navbar-toggler i{
+    font-size: 20px;
+    color: #238c2a;
+}
 .enlaces-top .nav-item a {
     color: #CCE4D8;
     margin: 1px 10px 1px 10px;
@@ -122,6 +140,7 @@ a {
 }
 
 .personal .social .i-links {
+    height: 100%;
     font-size: 17px;
     color: #fff;
     padding: 20px;
@@ -129,4 +148,49 @@ a {
     border-radius: 50px;
     display: flex;
     width: 100%;
+}
+
+/*SLIDER*/
+.carousel-item.active img{
+    transition: 2s;
+    animation: slider 6s ease-in-out infinite;
+    height: auto;
+}
+@keyframes slider {
+    0%{
+        transform: translateY(0px);
+    }
+    50%{
+        transform: translateY(-110px);
+    }
+    100%{
+        transform: translateY(-95px);
+    }
+}
+
+
+@media (max-width: 1260px) {
+    .carousel.slider{
+        height: 370px !important;
+    }
+    .carousel-item.active img{
+        animation: sliderResponsive 6s ease-in-out infinite !important;
+    }
+    @keyframes sliderResponsive {
+        0%{
+            transform: translateY(0px);
+        }
+        50%{
+            transform: translateY(-37px);
+        }
+        100%{
+            transform: translateY(-35px);
+        }
+    }
+    .informe-navbar{
+        display: none;
+    }
+    .nav-item *{
+        font-size: 11px;
+    }
 }

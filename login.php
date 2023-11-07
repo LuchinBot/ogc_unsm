@@ -2,22 +2,22 @@
 require "src/db/conexion.php";
 $url = "http://localhost/ogc_unsm/";
 session_start();
-if (isset($_SESSION['user'])) {
-  header('Location: index');
-}
 $display = 0;
 if (isset($_POST['login'])) {
-  $email = $_POST['user'];
-  $token = $_POST['password'];
+  $a = $_POST['user'];
+  $b = $_POST['password'];
 
-  if ($email == "admin" && $token == "123456") {
-    $_SESSION['user'] = "Administrador";
+  $stmt = $base->prepare('select * from usuario where username = ? and keypass = ? ');
+  $result = $stmt->execute(array($a, $b));
+  $result = $stmt->fetch(PDO::FETCH_ASSOC);
+
+  if ($result) {
+    $_SESSION['user'] = $result['idusuario'];
     echo '<script>window.location.href = "' . $url . 'public/view/admin/";</script>';
   } else {
     $display = 1;
   }
 }
-
 
 ?>
 <!DOCTYPE html>
@@ -53,11 +53,11 @@ if (isset($_POST['login'])) {
         <div class="form-inputs" style="display:none">
           <div class="form-group-login">
             <i class="fa-regular fa-user"></i>
-            <input type="text" class="form-control-login" name="user" autocomplete="off" />
+            <input type="text" class="form-control-login" name="user" placeholder="USERNAME" autocomplete="off" />
           </div>
           <div class="form-group-login mb-5">
             <i class="fa-regular fa-eye"></i>
-            <input type="password" class="form-control-login" name="password" autocomplete="off" />
+            <input type="password" class="form-control-login" name="password" placeholder="XXXXXXXX" autocomplete="off" />
           </div>
         </div>
         <div class="scroll-login">
