@@ -9,10 +9,8 @@ $(document).ready(function () {
                 url : "form?id="+id,
                 success: function(data){
                     $('.modal .body-wrapper').html(data);
-                    console.log('nhaa');
                 }
             });
-
     });
 
 });

@@ -1,83 +1,182 @@
-/*GENERAL*/
+/*MAIN*/
 body {
-    text-transform: uppercase !important;
     font-family: 'Lato', sans-serif;
-    font-size: 14px !important;
+    font-size: 12px !important;
     user-select: none;
     background-color: #F4F6F9 !important;
 }
-.nav .nav-link{
-    font-weight: 200 !important;
-    color: #fff !important;
-}
-.nav .nav-link.active{
-    background-color: #218545 !important;
-}
 
-.navbar-nav .nav-link:hover{
-    background-color: transparent !important;
-}
-button {
-    font-weight: 600 !important;
-    color: #fff;
-    background-color: transparent;
+[type=search] {
     border-radius: 0 !important;
-    border: 0 !important;
 }
-.img-table img{
-    transition: 0.8s;
-    border: 1px solid transparent;
 
+[type=search]:focus {
+    outline: none !important;
+    border: 1px solid #218545 !important;
 }
-.img-table img:hover{
-    cursor: zoom-in;
-    background-color: #fff;
-    border: 1px solid #21854681;
-    transform: scale(6);
-}
-.dataTables_length *{
-    font-weight: 400 !important;
-}
-.dataTables_filter *{
-    font-weight: 400 !important;
-}
-p{
+
+p {
     font-size: 11px !important;
     font-weight: 200 !important;
 }
-.modal-title{
-    font-size: 14px !important;
-}
-.form-label{
-    font-size: 10px !important;
 
+select {
+    border-radius: 0 !important;
 }
+
+select:focus {
+    outline: none !important;
+    border: 1px solid #218545 !important;
+}
+
+
+small {
+    font-style: italic;
+    font-size: 10px;
+    color: #33454C !important;
+    font-weight: 100 !important;
+}
+
 button:focus {
     outline: none !important;
     box-shadow: none !important;
     border: none !important;
 }
-.form-control{
-    font-size: 12px  !important;
+
+/*LOADING PAGE*/
+.loader-page {
+    position: fixed;
+    z-index: 25000;
+    background: rgb(255, 255, 255);
+    left: 0px;
+    top: 0px;
+    height: 100%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all .3s ease;
+}
+
+.loader-page::before {
+    content: "";
+    position: absolute;
+    border: 2px solid #00C564;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    box-sizing: border-box;
+    border-left: 2px solid rgba(50, 150, 176, 0);
+    border-top: 2px solid rgba(50, 150, 176, 0);
+    animation: rotarload 1s linear infinite;
+    transform: rotate(0deg);
+}
+
+@keyframes rotarload {
+    0% {
+        transform: rotate(0deg)
+    }
+
+    100% {
+        transform: rotate(360deg)
+    }
+}
+
+.loader-page::after {
+    content: "";
+    position: absolute;
+    border: 2px solid #00C564;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    box-sizing: border-box;
+    border-left: 2px solid rgba(50, 150, 176, 0);
+    border-top: 2px solid rgba(50, 150, 176, 0);
+    animation: rotarload 1s ease-out infinite;
+    transform: rotate(0deg);
+}
+
+/*OTHER*/
+
+.nav .nav-link {
+    font-weight: 200 !important;
+    color: #fff !important;
+}
+
+.nav .nav-link.active {
+    background-color: #218545 !important;
+}
+
+.navbar-nav .nav-link:hover {
+    background-color: transparent !important;
+}
+
+.btn {
+    font-size: 12px !important;
+    font-weight: 400 !important;
+    color: #ffffffa7;
+    background-color: transparent;
+    border-radius: 2px !important;
+    border: 0 !important;
+}
+
+.img-table img {
+    transition: 0.8s;
+    border: 1px solid transparent;
+
+}
+
+.img-table img:hover {
+    cursor: zoom-in;
+    background-color: #fff;
+    border: 1px solid #21854681;
+    transform: scale(6);
+}
+
+.dataTables_length * {
+    font-weight: 400 !important;
+}
+
+.dataTables_filter * {
+    font-weight: 400 !important;
+}
+
+
+.modal-title {
+    font-size: 14px !important;
+}
+
+
+
+.form-control {
+    font-size: 12px !important;
     border-radius: 0 !important;
 }
-.form-group label{
-    font-weight: 700 !important;
-    font-size: 12px  !important;
-    color: #BABCC5!important;
+
+.error {
+    font-style: italic;
+    font-size: 10px;
+    color: #e91e62c1 !important;
+    font-weight: 100 !important;
 }
-.input-group-text{
-    font-size: 12px  !important;
+
+.form-group label {
+    font-weight: 400 !important;
+    font-size: 12px;
+    color: #BABCC5;
 }
-.wrapper-login{
+
+.input-group-text {
+    font-size: 12px !important;
+}
+
+.wrapper-login {
     width: 100%;
     height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
 }
-
-/*OTHER*/
 
 .col-form-label {
     font-size: 10px !important;
@@ -158,6 +257,7 @@ button:focus {
 }
 
 .form-control-login {
+    font-weight: 200;
     text-align: center;
     text-transform: uppercase !important;
     width: 100%;
@@ -170,7 +270,7 @@ button:focus {
 }
 
 .form-control-login:focus {
-    font-weight: 600;
+    font-weight: 400;
     outline: none;
     box-shadow: none;
 }
@@ -207,7 +307,7 @@ button:focus {
     justify-content: end;
 }
 
-.error {
+.error-text {
     width: 45px;
     height: 45px;
     border-radius: 50px;
@@ -219,11 +319,15 @@ button:focus {
     color: #E91E63;
 }
 
-.error i {
+.error-text i {
     animation: spin 3s linear infinite;
     transform-origin: center;
 
 }
+
+
+/*ERROR*/
+
 
 @keyframes spin {
     0% {
@@ -239,47 +343,4 @@ button:focus {
     }
 }
 
-.loader-page {
-    position: fixed;
-    z-index: 25000;
-    background: rgb(255, 255, 255);
-    left: 0px;
-    top: 0px;
-    height: 100%;
-    width: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition:all .3s ease;
-  }
-  .loader-page::before {
-    content: "";
-    position: absolute;
-    border: 2px solid rgb(50, 150, 176);
-    width: 60px;
-    height: 60px;
-    border-radius: 50%;
-    box-sizing: border-box;
-    border-left: 2px solid rgba(50, 150, 176,0);
-    border-top: 2px solid rgba(50, 150, 176,0);
-    animation: rotarload 1s linear infinite;
-    transform: rotate(0deg);
-  }
-  @keyframes rotarload {
-      0%   {transform: rotate(0deg)}
-      100% {transform: rotate(360deg)}
-  }
-  .loader-page::after {
-    content: "";
-    position: absolute;
-    border: 2px solid rgba(50, 150, 176,.5);
-    width: 60px;
-    height: 60px;
-    border-radius: 50%;
-    box-sizing: border-box;
-    border-left: 2px solid rgba(50, 150, 176, 0);
-    border-top: 2px solid rgba(50, 150, 176, 0);
-    animation: rotarload 1s ease-out infinite;
-    transform: rotate(0deg);
-  }
 /*PRINCIPAL PAGE*/

@@ -12,7 +12,7 @@ if (isset($_POST['add'])) {
     $result = $stmt->execute(array($a, $b, $c));
     $result = $stmt->fetch(PDO::FETCH_ASSOC);
     if ($result) {
-        echo '<script type="text/javascript">window.location="' . $url . 'public/view/admin/'.$title_page.'";</script>';
+        echo '<script type="text/javascript">window.location="' . $url . 'public/view/admin/' . $title_page . '";</script>';
     }
 }
 if (isset($_POST['edit'])) {
@@ -26,7 +26,6 @@ if (isset($_POST['edit'])) {
     $result = $stmt->fetch(PDO::FETCH_ASSOC);
 
     echo '<script type="text/javascript">window.location="' . $url . 'public/view/admin/enlaces";</script>';
-
 }
 
 $stmt = $base->prepare('SELECT * from enlace');
@@ -77,9 +76,9 @@ $data = $stmt->fetchAll(PDO::FETCH_OBJ);
                         <thead>
                             <tr>
                                 <th style="width: 5%;" class="text-center">#</th>
-                                <th style="width: 10%;"  class="text-center">Icono</th>
+                                <th style="width: 10%;" class="text-center">Icono</th>
                                 <th>Titulo</th>
-                                <th  class="text-center">Acciones</th>
+                                <th class="text-center">Acciones</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -87,9 +86,9 @@ $data = $stmt->fetchAll(PDO::FETCH_OBJ);
                             foreach ($data as $v1) : ?>
                                 <tr>
                                     <td class="text-center"><?= $count ?></td>
-                                    <td  class="text-center"><?= $v1->icono_enlace ?></td>
+                                    <td class="text-center"><?= $v1->icono_enlace ?></td>
                                     <td><?= $v1->titulo_enlace ?></td>
-                                    <td  class="text-center">
+                                    <td class="text-center">
                                         <button type="button" class="btn btn-primary btn-id" data-bs-toggle="modal" data-bs-target="#ModalEdit" id="<?= $v1->idenlace ?>"><i class="fa-solid fa-pen-to-square"></i></button>
                                         <?php if ($v1->estado_enlace == 1) { ?>
                                             <a href="updateWeb?idHide=<?= $v1->idenlace ?>" class="btn text-white bg-warning"><i class="fa-solid fa-eye"></i></a>
@@ -104,23 +103,25 @@ $data = $stmt->fetchAll(PDO::FETCH_OBJ);
                     </table>
                 </div>
                 <div class="collapse" id="collapseNew">
-                    <form method="post" enctype="multipart/form-data">
-                        <div class="row">
-                            <div class="form-group col-md-6">
-                                <label>Titulo</label>
-                                <input type="text" name="titulo_enlace" class="form-control" placeholder="" required>
+                    <form method="post" id="validateForm">
+                        <fieldset>
+                            <div class="row">
+                                <div class="form-group col-md-6">
+                                    <label>Titulo</label>
+                                    <input type="text" name="titulo_enlace" class="form-control" placeholder="" required title="Campo requerido">
+                                </div>
+                                <div class="form-group col-md-6">
+                                    <label>Icono | <a href="https://fontawesome.com/search?q=institution&o=r&m=free" target="_blank"> ver aquí</a></label>
+                                    <input type="text" name="icono_enlace" class="form-control" placeholder="" required title="Campo requerido, debe contener un icono de FontAwesome">
+                                </div>
                             </div>
-                            <div class="form-group col-md-6">
-                                <label>Icono: <a href="https://fontawesome.com/search?q=institution&o=r&m=free" target="_blank">Ver aquí</a></label>
-                                <input type="text" name="icono_enlace" class="form-control" placeholder="" required>
-                            </div>
-                        </div>
 
-                        <div class="form-group">
-                            <label>URL del enlace de interes</label>
-                            <input type="url" name="url_enlace" class="form-control" placeholder="" required>
-                        </div>
-                        <button type="submit" name="add" class="btn btn-success px-3 fw-bolder"><i class="fa-solid fa-rotate me-1"></i> Actualizar <?= $title_page ?></button>
+                            <div class="form-group">
+                                <label>URL del enlace de interes</label>
+                                <input type="url" name="url_enlace" class="form-control" placeholder="" required title="Campo requerido, debe contener una URL">
+                            </div>
+                            <button type="submit" name="add" class="btn btn-success px-3 fw-bolder"><i class="fa-solid fa-rotate me-1"></i> Actualizar <?= $title_page ?></button>
+                        </fieldset>
                     </form>
                 </div>
             </div>
@@ -143,9 +144,5 @@ $data = $stmt->fetchAll(PDO::FETCH_OBJ);
     </div>
 </div>
 
-<script>
-    var controller = "<?= $title_page ?>"
-</script>
 <?php include "../../../layouts/footer_admin.php"; ?>
 <?php include "../../../layouts/scripts.php"; ?>
-<script src="../../../../src/js/admin/<?= $title_page ?>/form.js"></script>

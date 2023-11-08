@@ -76,7 +76,7 @@ $noticia2 = $stmt->fetchAll(PDO::FETCH_OBJ);
     <div class="container d-flex col-12">
         <div class="col-8 pe-5">
             <div class="position-relative">
-                <h4 class="text-success pb-3 fw-bold bb-title">Noticias</h4>
+                <h4 class="pb-3 fw-bold bb-title">Noticias</h4>
             </div>
             <div id="carouselExample" class="carousel slide carousel-fade">
                 <div class="carousel-inner">
@@ -133,7 +133,7 @@ $noticia2 = $stmt->fetchAll(PDO::FETCH_OBJ);
         </div>
         <div class="col-4">
             <div class="position-relative">
-                <h4 class="text-success pb-3 fw-bold d-flex justify-content-between bb-title">
+                <h4 class="pb-3 fw-bold d-flex justify-content-between bb-title">
                     <span>Próximos Eventos</span>
                     <span><a href="#"><i class="fa fa-plus text-success fs-6"></i></a></span>
                 </h4>
@@ -166,7 +166,7 @@ $noticia2 = $stmt->fetchAll(PDO::FETCH_OBJ);
     </div>
 </section>
 <section>
-    <div class="container-fluid my-4 py-1 p-0" style="background: #00C564">
+    <div class="container-fluid mt-4 py-1 p-0" style="background: #00C564">
         <div class="container py-4">
             <h4 class="text-white">Enlaces de interés</h4>
             <hr class="text-white">

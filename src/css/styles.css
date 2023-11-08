@@ -1,3 +1,4 @@
+/*MAIN*/
 body {
     font-family: 'Roboto', sans-serif !important;
     margin: 0;
@@ -16,6 +17,7 @@ a {
 .position-relative{
     position: relative;
 }
+/*LOADING PAGE*/
 .loader-page {
     position: fixed;
     z-index: 25000;
@@ -60,7 +62,7 @@ a {
     transform: rotate(0deg);
   }
 
-/*Estilos para la pagina*/
+/*STYLES PAGE*/
 .navbar-nav .nav-item .nav-link {
     padding: 8px 20px 8px 20px !important;
     text-transform: uppercase !important;
@@ -272,7 +274,9 @@ a {
     min-width: 100px !important;
     height: 50px !important;
 }
-
+.bb-title{
+    color: #00C564 !important;
+}
 .bb-title::after{
     content: '';
     position: absolute;

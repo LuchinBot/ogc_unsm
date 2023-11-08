@@ -35,14 +35,12 @@ if (isset($_POST['edit'])) {
         move_uploaded_file($_FILES['foto']['tmp_name'], $imagen);
 
         $stmt = $base->prepare('UPDATE personal SET idpersona_natural =?,idcargo=?,foto=?,facebook=?,linkedin=? where idpersonal = ?');
-        $result = $stmt->execute(array($a, $b, $imagenUrl, $c, $d,$id));
+        $result = $stmt->execute(array($a, $b, $imagenUrl, $c, $d, $id));
         $result = $stmt->fetch(PDO::FETCH_ASSOC);
-       
-    }else{
+    } else {
         $stmt = $base->prepare('UPDATE personal SET idpersona_natural =?,idcargo=?,facebook=?,linkedin=? where idpersonal = ?');
-        $result = $stmt->execute(array($a, $b, $c, $d,$id));
+        $result = $stmt->execute(array($a, $b, $c, $d, $id));
         $result = $stmt->fetch(PDO::FETCH_ASSOC);
-
     }
     if ($result) {
         echo '<script type="text/javascript">window.location="' . $url . 'public/view/admin/personal";</script>';
@@ -118,7 +116,7 @@ $data3 = $stmt->fetchAll(PDO::FETCH_OBJ);
                             foreach ($data as $v1) : ?>
                                 <tr>
                                     <td class="text-center"><?= $count ?></td>
-                                    <td class="text-center img-table"><img src="<?= $url.$v1->foto ?>" style="width:40px; height:40px; border-radius:50px"></td>
+                                    <td class="text-center img-table"><img src="<?= $url . $v1->foto ?>" style="width:40px; height:40px; border-radius:50px"></td>
                                     <td><?= $v1->nombres . ' ' . $v1->apellidos ?></td>
                                     <td><?= $v1->descripcion ?></td>
                                     <td>
@@ -136,38 +134,40 @@ $data3 = $stmt->fetchAll(PDO::FETCH_OBJ);
                     </table>
                 </div>
                 <div class="collapse" id="collapseNew">
-                    <form method="post" enctype="multipart/form-data">
-                        <div class="form-group">
-                            <label>Persona Natural</label>
-                            <select class="select2" name="idpersona_natural" style="width: 100%;">
-                                <?php foreach ($data2 as $v2) : ?>
-                                    <option value="<?= $v2->idpersona_natural ?>"><?= $v2->dni . ' - ' . $v2->nombres . ' ' . $v2->apellidos ?></option>
-                                <?php endforeach; ?>
-                            </select>
-                        </div>
-                        <div class="form-group">
-                            <label>Cargo</label>
-                            <select class="select2" name="idcargo" style="width: 100%;">
-                                <?php foreach ($data3 as $v3) : ?>
-                                    <option value="<?= $v3->idcargo ?>"><?= $v3->descripcion ?></option>
-                                <?php endforeach; ?>
-                            </select>
-                        </div>
-                        <div class="form-group">
-                            <div class="mb-3">
-                                <label for="formFile2" class="form-label">FOTO</label>
-                                <input class="form-control" accept="image/*" name="foto" type="file" id="formFile2">
+                    <form method="post" id="validateForm" enctype="multipart/form-data">
+                        <fieldset>
+                            <div class="form-group">
+                                <label>Persona Natural</label>
+                                <select class="select2" name="idpersona_natural" style="width: 100%;" required title="Campo requerido">
+                                    <?php foreach ($data2 as $v2) : ?>
+                                        <option value="<?= $v2->idpersona_natural ?>"><?= $v2->dni . ' - ' . $v2->nombres . ' ' . $v2->apellidos ?></option>
+                                    <?php endforeach; ?>
+                                </select>
                             </div>
-                        </div>
-                        <div class="form-group">
-                            <label>Facebook</label>
-                            <input type="url" name="facebook" class="form-control" placeholder="" required>
-                        </div>
-                        <div class="form-group">
-                            <label>Linkedin</label>
-                            <input type="url" name="linkedin" class="form-control" placeholder="" required>
-                        </div>
-                        <button type="submit" name="add" class="btn btn-success px-3 fw-bolder"><i class="fa-solid fa-rotate me-1"></i> Actualizar <?= $title_page ?></button>
+                            <div class="form-group">
+                                <label>Cargo</label>
+                                <select class="select2" name="idcargo" style="width: 100%;" required title="Campo requerido">
+                                    <?php foreach ($data3 as $v3) : ?>
+                                        <option value="<?= $v3->idcargo ?>"><?= $v3->descripcion ?></option>
+                                    <?php endforeach; ?>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <div class="mb-3">
+                                    <label for="formFile2" class="form-label">FOTO</label>
+                                    <input class="form-control" accept="image/*" name="foto" type="file" id="formFile2" required title="Campo requerido, debe contener un foto de buena calidad">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label>Facebook</label>
+                                <input type="url" name="facebook" class="form-control" placeholder="" required title="Campo requerido, debe contener una URL">
+                            </div>
+                            <div class="form-group">
+                                <label>Linkedin</label>
+                                <input type="url" name="linkedin" class="form-control" placeholder="" required title="Campo requerido, debe contener una URL">
+                            </div>
+                            <button type="submit" name="add" class="btn btn-success px-3 fw-bolder"><i class="fa-solid fa-rotate me-1"></i> Actualizar <?= $title_page ?></button>
+                        </fieldset>
                     </form>
                 </div>
             </div>
@@ -190,9 +190,5 @@ $data3 = $stmt->fetchAll(PDO::FETCH_OBJ);
     </div>
 </div>
 
-<script>
-    var controller = "<?= $title_page ?>"
-</script>
 <?php include "../../../layouts/footer_admin.php"; ?>
 <?php include "../../../layouts/scripts.php"; ?>
-<script src="../../../../src/js/admin/<?= $title_page ?>/form.js"></script>

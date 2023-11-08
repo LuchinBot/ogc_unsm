@@ -34,7 +34,7 @@ if (isset($_GET['id'])) {
             <div class="form-group">
                 <div class="mb-3">
                     <label for="formFile2" class="form-label">Imagen Actual</label>
-                    <img src="<?=$url.$data['imagen_carrusel'] ?>">
+                    <img src="<?=$url.$data['imagen_carrusel'] ?>" style="width: 100%;">
                 </div>
             </div>
         </div>

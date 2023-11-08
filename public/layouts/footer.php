@@ -1,4 +1,4 @@
-<footer class="container-fluid bg-success py-4  ">
+<footer class="container-fluid bg-success py-4">
     <div class="footer container d-flex">
         <a href="" class="d-flex col-6">
             <img src="<?= $url ?>src/img/default/logo_unsm_only.png">

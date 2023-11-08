@@ -34,7 +34,7 @@ if (isset($_POST['edit'])) {
         move_uploaded_file($_FILES['imagen_noticia']['tmp_name'], $imagen);
 
         $stmt = $base->prepare('UPDATE noticia SET titulo_noticia=?,subtitulo_noticia=?,descripcion_noticia=?,imagen_noticia=? where idnoticia = ?');
-        $result = $stmt->execute(array($a, $b,$c, $imagenUrl, $id));
+        $result = $stmt->execute(array($a, $b, $c, $imagenUrl, $id));
         $result = $stmt->fetch(PDO::FETCH_ASSOC);
     } else {
         $stmt = $base->prepare('UPDATE noticia SET titulo_noticia=?,subtitulo_noticia=?,descripcion_noticia=? where idnoticia = ?');
@@ -123,29 +123,33 @@ $data = $stmt->fetchAll(PDO::FETCH_OBJ);
                     </table>
                 </div>
                 <div class="collapse" id="collapseNew">
-                    <form method="post" enctype="multipart/form-data">
-                        <input type="hidden" name="post_noticia" class="form-control" value="<?=$DateAndTime?>" required>
+                    <form method="post" id="validateForm" enctype="multipart/form-data">
+                        <fieldset>
+                            <input type="hidden" name="post_noticia" class="form-control" value="<?= $DateAndTime ?>" required title="Campo requerido">
 
-                        <div class="form-group">
-                            <label>Titulo</label>
-                            <input type="text" name="titulo_noticia" class="form-control" placeholder="" required>
-                        </div>
-                        <div class="form-group">
-                            <label>Subtitulo</label>
-                            <input type="text" name="subtitulo_noticia" class="form-control" placeholder="" required>
-                        </div>
-                        <div class="form-group">
-                            <label>Descripción</label>
-                            <textarea class="form-control" id="summernote" required name="descripcion_noticia" required></textarea>
-                        </div>
-                        <div class="form-group">
-                            <div class="mb-3">
-                                <label for="formFile2" class="form-label">Imagen</label>
-                                <input class="form-control" accept="image/*" name="imagen_noticia" type="file" id="formFile2" required>
-                                <small class="text-secondary">la imagen debe tener esta dimensión: <strong>1400 x 607 pixeles</strong></small>
+                            <div class="row">
+                                <div class="form-group col-md-6">
+                                    <label>Titulo</label>
+                                    <input type="text" name="titulo_noticia" class="form-control" placeholder="" required title="Campo requerido">
+                                </div>
+                                <div class="form-group col-md-6">
+                                    <label>Subtitulo</label>
+                                    <input type="text" name="subtitulo_noticia" class="form-control" placeholder="" required title="Campo requerido">
+                                </div>
                             </div>
-                        </div>
-                        <button type="submit" name="add" class="btn btn-success px-3 fw-bolder"><i class="fa-solid fa-rotate me-1"></i> Actualizar <?= $title_page ?></button>
+                            <div class="form-group">
+                                <label>Descripción</label>
+                                <textarea class="form-control" id="summernote" required name="descripcion_noticia" required title="Campo requerido"></textarea>
+                            </div>
+                            <div class="form-group">
+                                <div class="mb-3">
+                                    <label for="formFile2" class="form-label">Imagen</label>
+                                    <input class="form-control" accept="image/*" name="imagen_noticia" type="file" id="formFile2" required title="Campo requerido">
+                                    <small class="text-secondary">la imagen debe tener esta dimensión: <strong>1400 x 607 pixeles</strong></small>
+                                </div>
+                            </div>
+                            <button type="submit" name="add" class="btn btn-success px-3 fw-bolder"><i class="fa-solid fa-rotate me-1"></i> Actualizar <?= $title_page ?></button>
+                        </fieldset>
                     </form>
                 </div>
             </div>
@@ -168,9 +172,5 @@ $data = $stmt->fetchAll(PDO::FETCH_OBJ);
     </div>
 </div>
 
-<script>
-    var controller = "<?= $title_page ?>"
-</script>
 <?php include "../../../layouts/footer_admin.php"; ?>
 <?php include "../../../layouts/scripts.php"; ?>
-<script src="../../../../src/js/admin/<?= $title_page ?>/form.js"></script>

@@ -1,16 +1,23 @@
     </div>
     <div class="loader-page"></div>
 
-    <script src="<?= $url ?>src/js/popper.min.js"></script>
-    <script src="<?= $url ?>src/js/bootstrap.min.js"></script>
+    <!--Others-->
+    <script src="<?= $url ?>src/plugins/popper/popper.min.js"></script>
+    <script src="<?= $url ?>src/plugins/bootstrap/bootstrap.min.js"></script>
     <script src="<?= $url ?>src/plugins/jquery/jquery.min.js"></script>
     <script src="<?= $url ?>src/plugins/jquery-ui/jquery-ui.min.js"></script>
-    <script src="<?= $url ?>src/js/adminlte.js"></script>
-    <script src="<?= $url ?>src/js/pages/dashboard.js"></script>
+    <script src="<?= $url ?>src/plugins/adminlte/adminlte.js"></script>
     <script src="<?= $url ?>src/plugins/summernote/summernote-bs4.min.js"></script>
-    <script src="<?= $url ?>src/js/code.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
-    <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.js"></script>
+    <script src="<?= $url ?>src/plugins/select2/select2.min.js"></script>
+    <script src="<?= $url ?>src/plugins/datatables/jquery.dataTables.js"></script>
+    <script src="<?= $url ?>src/plugins/jquery-validate/jquery.validate.min.js"></script>
+
+    <!--Page-->
+    <script src="<?= $url ?>src/js/admin/code.js"></script>
+    <script src="<?= $url ?>src/js/admin/form.js"></script>
+    <script src="<?= $url ?>src/js/public/code.js"></script>
+
+
 
     <script>
         $(document).ready(function() {
@@ -64,6 +71,7 @@
 
             });
 
+            $("#validateForm").validate({});
         });
     </script>
     </body>

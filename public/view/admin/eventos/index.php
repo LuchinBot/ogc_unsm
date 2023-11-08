@@ -1,53 +1,54 @@
 <?php
-$title_page = "Carrusel";
+$title_page = "Eventos";
 
 include "../../../layouts/header_admin.php";
 
 if (isset($_POST['add'])) {
-    $a = $_POST['titulo_carrusel'];
-    $b = $_POST['descripcion_carrusel'];
+    $a = $_POST['titulo_evento'];
+    $b = $_POST['subtitulo_evento'];
+    $c = $_POST['descripcion_evento'];
+    $d = $_POST['post_evento'];
+    $d = date("Y-m-d H:i:s", strtotime($d));
 
-    if ($_FILES['imagen_carrusel']['name'] != "") {
-        $imagen = "../../../../src/img/uploads/" . $_FILES['imagen_carrusel']['name'];
-        $imagenUrl = "src/img/uploads/" . $_FILES['imagen_carrusel']['name'];
-        move_uploaded_file($_FILES['imagen_carrusel']['tmp_name'], $imagen);
 
-        $stmt = $base->prepare('INSERT INTO carrusel(titulo_carrusel,descripcion_carrusel,imagen_carrusel) values(?,?,?)');
-        $result = $stmt->execute(array($a, $b, $imagenUrl));
+    if ($_FILES['imagen_evento']['name'] != "") {
+        $imagen = "../../../../src/img/uploads/" . $_FILES['imagen_evento']['name'];
+        $imagenUrl = "src/img/uploads/" . $_FILES['imagen_evento']['name'];
+        move_uploaded_file($_FILES['imagen_evento']['tmp_name'], $imagen);
+
+        $stmt = $base->prepare('INSERT INTO evento(titulo_evento,subtitulo_evento,descripcion_evento,imagen_evento,post_evento) values(?,?,?,?,?)');
+        $result = $stmt->execute(array($a, $b, $c, $imagenUrl, $d));
         $result = $stmt->fetch(PDO::FETCH_ASSOC);
         if ($result) {
-            echo '<script type="text/javascript">window.location="' . $url . 'public/view/admin/carrusel";</script>';
-            exit();
-
+            echo '<script type="text/javascript">window.location="' . $url . 'public/view/admin/eventos";</script>';
         }
     }
 }
 if (isset($_POST['edit'])) {
-    $id = $_POST['idcarrusel'];
-    $a = $_POST['titulo_carrusel'];
-    $b = $_POST['descripcion_carrusel'];
+    $id = $_POST['idevento'];
+    $a = $_POST['titulo_evento'];
+    $b = $_POST['subtitulo_evento'];
+    $c = $_POST['descripcion_evento'];
 
-    if ($_FILES['imagen_carrusel']['name'] != "") {
-        $imagen = "../../../../src/img/uploads/" . $_FILES['imagen_carrusel']['name'];
-        $imagenUrl = "src/img/uploads/" . $_FILES['imagen_carrusel']['name'];
-        move_uploaded_file($_FILES['imagen_carrusel']['tmp_name'], $imagen);
+    if ($_FILES['imagen_evento']['name'] != "") {
+        $imagen = "../../../../src/img/uploads/" . $_FILES['imagen_evento']['name'];
+        $imagenUrl = "src/img/uploads/" . $_FILES['imagen_evento']['name'];
+        move_uploaded_file($_FILES['imagen_evento']['tmp_name'], $imagen);
 
-        $stmt = $base->prepare('UPDATE carrusel SET titulo_carrusel=?,descripcion_carrusel=?,imagen_carrusel=? where idcarrusel = ?');
-        $result = $stmt->execute(array($a, $b, $imagenUrl, $id));
+        $stmt = $base->prepare('UPDATE evento SET titulo_evento=?,subtitulo_evento=?,descripcion_evento=?,imagen_evento=? where idevento = ?');
+        $result = $stmt->execute(array($a, $b, $c, $imagenUrl, $id));
         $result = $stmt->fetch(PDO::FETCH_ASSOC);
     } else {
-        $stmt = $base->prepare('UPDATE carrusel SET titulo_carrusel=?,descripcion_carrusel=? where idcarrusel = ?');
-        $result = $stmt->execute(array($a, $b, $id));
+        $stmt = $base->prepare('UPDATE evento SET titulo_evento=?,subtitulo_evento=?,descripcion_evento=? where idevento = ?');
+        $result = $stmt->execute(array($a, $b, $c, $id));
         $result = $stmt->fetch(PDO::FETCH_ASSOC);
     }
     if ($result) {
-        echo '<script type="text/javascript">window.location="' . $url . 'public/view/admin/carrusel";</script>';
-        exit();
-
+        echo '<script type="text/javascript">window.location="' . $url . 'public/view/admin/eventos";</script>';
     }
 }
 
-$stmt = $base->prepare('SELECT * from carrusel');
+$stmt = $base->prepare('SELECT * from evento');
 $data = $stmt->execute();
 $data = $stmt->fetchAll(PDO::FETCH_OBJ);
 
@@ -77,7 +78,7 @@ $data = $stmt->fetchAll(PDO::FETCH_OBJ);
             <p class="text-secondary bg-dark border-bottom px-4 py-2">
                 <i class="fa fa-info-circle text-warning"></i>
                 Todos los cambios los puedes verificar
-                <a href="<?= $url ?>" target="_blank" class="font-weight-bold text-warning">aquí <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+                <a href="<?= $url ?>eventos" target="_blank" class="font-weight-bold text-warning">aquí <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
             </p>
             <div class="d-flex justify-content-center">
                 <p>
@@ -97,7 +98,7 @@ $data = $stmt->fetchAll(PDO::FETCH_OBJ);
                                 <th class="text-center">#</th>
                                 <th class="text-center">Imagen</th>
                                 <th>Titulo</th>
-                                <th>Descripcion</th>
+                                <th>Subtitulo</th>
                                 <th>Acciones</th>
                             </tr>
                         </thead>
@@ -106,15 +107,15 @@ $data = $stmt->fetchAll(PDO::FETCH_OBJ);
                             foreach ($data as $v1) : ?>
                                 <tr>
                                     <td class="text-center"><?= $count ?></td>
-                                    <td class="text-center img-table"><img src="<?= $url . $v1->imagen_carrusel ?>" style="width:40px"></td>
-                                    <td><?= $v1->titulo_carrusel ?></td>
-                                    <td><?= $v1->descripcion_carrusel ?></td>
+                                    <td class="text-center img-table"><img src="<?= $url . $v1->imagen_evento ?>" style="width:40px"></td>
+                                    <td><?= $v1->titulo_evento ?></td>
+                                    <td><?= $v1->subtitulo_evento ?></td>
                                     <td>
-                                        <button type="button" class="btn btn-primary btn-id" data-bs-toggle="modal" data-bs-target="#ModalEdit" id="<?= $v1->idcarrusel ?>"><i class="fa-solid fa-pen-to-square"></i></button>
-                                        <?php if ($v1->estado_carrusel == 1) { ?>
-                                            <a href="updateWeb?idHide=<?= $v1->idcarrusel ?>" class="btn text-white bg-warning"><i class="fa-solid fa-eye"></i></a>
+                                        <button type="button" class="btn btn-primary btn-id" data-bs-toggle="modal" data-bs-target="#ModalEdit" id="<?= $v1->idevento ?>"><i class="fa-solid fa-pen-to-square"></i></button>
+                                        <?php if ($v1->estado_evento == 1) { ?>
+                                            <a href="updateWeb?idHide=<?= $v1->idevento ?>" class="btn text-white bg-warning"><i class="fa-solid fa-eye"></i></a>
                                         <?php } else { ?>
-                                            <a href="updateWeb?idShow=<?= $v1->idcarrusel ?>" class="btn text-white bg-danger"><i class="fa-solid fa-eye-slash"></i></a>
+                                            <a href="updateWeb?idShow=<?= $v1->idevento ?>" class="btn text-white bg-danger"><i class="fa-solid fa-eye-slash"></i></a>
                                         <?php } ?>
                                     </td>
                                 </tr>
@@ -126,24 +127,33 @@ $data = $stmt->fetchAll(PDO::FETCH_OBJ);
                 <div class="collapse" id="collapseNew">
                     <form method="post" id="validateForm" enctype="multipart/form-data">
                         <fieldset>
-                            <div class="form-group">
-                                <label>Titulo</label>
-                                <input type="text" name="titulo_carrusel" class="form-control" placeholder="" required title="Campo requerido">
+                            <div class="row">
+                                <div class="form-group col-md-5">
+                                    <label>Titulo</label>
+                                    <input type="text" name="titulo_evento" class="form-control" placeholder="" required title="Campo requerido">
+                                </div>
+                                <div class="form-group col-md-5">
+                                    <label>Subtitulo</label>
+                                    <input type="text" name="subtitulo_evento" class="form-control" placeholder="" required title="Campo requerido">
+                                </div>
+                                <div class="form-group col-md-2">
+                                    <label>Fecha del evento</label>
+                                    <input type="datetime-local" name="post_evento" class="form-control" required title="Campo requerido">
+                                </div>
                             </div>
                             <div class="form-group">
                                 <label>Descripción</label>
-                                <textarea class="form-control" minlength="10" maxlength="50" required title="Campo requerido" name="descripcion_carrusel" style="height:100px"></textarea>
+                                <textarea class="form-control" id="summernote" required name="descripcion_evento" required title="Campo requerido"></textarea>
                             </div>
                             <div class="form-group">
                                 <div class="mb-3">
                                     <label for="formFile2" class="form-label">Imagen</label>
-                                    <input class="form-control" accept="image/*" name="imagen_carrusel" type="file" id="formFile2" required title="Campo requerido">
+                                    <input class="form-control" accept="image/*" name="imagen_evento" type="file" id="formFile2" required title="Campo requerido">
                                     <small class="text-secondary">la imagen debe tener esta dimensión: <strong>1400 x 607 pixeles</strong></small>
                                 </div>
                             </div>
                             <button type="submit" name="add" class="btn btn-success px-3 fw-bolder"><i class="fa-solid fa-rotate me-1"></i> Actualizar <?= $title_page ?></button>
                         </fieldset>
-
                     </form>
                 </div>
             </div>
@@ -153,7 +163,7 @@ $data = $stmt->fetchAll(PDO::FETCH_OBJ);
 
 <!--Modales-->
 <div class="modal fade" id="ModalEdit" tabindex="-1" aria-labelledby="ModalEdit" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-dialog modal-lg modal-dialog-centered">
         <div class="modal-content">
             <div class="modal-header">
                 <h5 class="modal-title">Editar <?= $title_page ?></h5>
