@@ -1,10 +1,7 @@
 <?php
 $title = "Personal | OGC";
-$active1 = "";
-$active2 = "";
-$active3 = "active";
 include "public/layouts/header.php";
-
+$active3 = "active";
 $stmt = $base->prepare('select * from personal as p
 inner join persona_natural as pn on (pn.idpersona_natural=p.idpersona_natural)
 inner join cargo as c on (c.idcargo=p.idcargo) where p.estado = 1');

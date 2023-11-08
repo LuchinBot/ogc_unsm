@@ -2,6 +2,11 @@
 require('C:\laragon\www\ogc_unsm\src\db\conexion.php');
 
 $url = "http://localhost/ogc_unsm/";
+$active1 = "";
+$active2 = "";
+$active3 = "";
+$active4 = "";
+$active5 = "";
 ?>
 <!DOCTYPE html>
 <html lang="en" style="height: auto;">
@@ -9,7 +14,7 @@ $url = "http://localhost/ogc_unsm/";
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="icon" href="<?=$url?>src/img/logo_ogc.png" type="image/icon">
+  <link rel="icon" href="<?=$url?>src/img/default/logo_unsm_only.png" type="image/icon">
   <title><?=$title?></title>
   <link href="<?= $url ?>src/css/styles.css" rel="stylesheet">
   <link href="<?= $url ?>src/css/other/bootstrap.min.css" rel="stylesheet">

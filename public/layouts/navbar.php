@@ -25,14 +25,13 @@
         </div>
         <div class="enlaces-top col-6 d-flex justify-content-end align-items-center">
             <ul class="d-flex m-0 p-0" style="list-style: none !important;">
-                <li class="nav-item"><a href="<?=$url?>login">ADMINISTRACIÓN</a></li>
-                <li class="nav-item"><a href="" class="me-0">contacto</a></li>
+                <li class="nav-item"><a href="<?=$url?>login">administración</a></li>
             </ul>
         </div>
     </div>
 </div>
 <nav class="navbar sticky-top navbar-expand-lg bg-body-tertiary bg-white" style="box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;">
-    <div class="container py-2">
+    <div class="container py-1">
         <a class="navbar-brand d-flex" href="<?= $url ?>">
             <img src="<?= $url ?>src/img/default/logo_ogc_unsm.svg" style="width:100%">
         </a>
@@ -41,16 +40,19 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0 col-12 justify-content-end">
-                <li class="nav-item me-2">
+                <li class="nav-item position-relative me-2">
                     <a class="nav-link <?=$active1?>" aria-current="page" href="<?= $url ?>">Home</a>
                 </li>
-                <li class="nav-item me-2">
+                <li class="nav-item position-relative me-2">
                     <a class="nav-link <?=$active2?>" href="<?= $url ?>nosotros">Nosotros</a>
                 </li>
-                <li class="nav-item me-2">
+                <li class="nav-item position-relative me-2">
                     <a class="nav-link <?=$active3?>" href="<?= $url ?>personal">Personal</a>
                 </li>
-                <li class="nav-item me-2 dropdown">
+                <li class="nav-item position-relative me-2">
+                    <a class="nav-link <?=$active4?>" href="<?= $url ?>noticias">Noticias</a>
+                </li>
+                <li class="nav-item position-relative me-2 dropdown">
                     <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                         Eventos
                     </a>

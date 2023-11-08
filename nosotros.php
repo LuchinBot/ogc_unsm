@@ -1,9 +1,7 @@
 <?php
 $title = "Nosotros | OGC";
-$active1 = "";
-$active2 = "active";
-$active3 = "";
 include "public/layouts/header.php"; 
+$active2 = "active";
 
 $stmt = $base->prepare('select * from nosotros ');
 $data = $stmt->execute();

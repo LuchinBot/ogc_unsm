@@ -22,9 +22,8 @@
 </nav>
 <aside class="main-sidebar bg-dark elevation-4 p-0">
   <!-- Brand Logo -->
-  <a href="<?= $url ?>public/view/admin" class="brand-link border-bottom bg-dark">
-    <img src="<?= $url ?>src/img/default/logo_ogc.png" alt="AdminLTE Logo" style="opacity: .8; width: 40px">
-    <span class="brand-text text-white font-weight-light">OGC <strong>DASHBOARD</strong></span>
+  <a href="<?= $url ?>public/view/admin" class="brand-link border-bottom bg-white">
+    <img src="<?= $url ?>src/img/default/logo_ogc_UNSM.svg" alt="OGC Logo" style="opacity: .8; ">
   </a>
 
   <!-- Sidebar -->
@@ -56,6 +55,14 @@
             <i class="nav-icon fa fa-institution"></i>
             <p>
               Nosotros generales
+            </p>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a href="<?= $url ?>public/view/admin/carrusel" class="nav-link">
+            <i class="nav-icon fa fa-image"></i>
+            <p>
+              Carrusel principal
             </p>
           </a>
         </li>

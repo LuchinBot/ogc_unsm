@@ -1,5 +1,8 @@
 <?php
 require('C:\laragon\www\ogc_unsm\src\db\conexion.php');
+$Object = new DateTime();  
+$Object->setTimezone(new DateTimeZone('America/Lima'));
+$DateAndTime = $Object->format("Y-m-d H:i:s");  
 
 $url = "http://localhost/ogc_unsm/";
 session_start();
@@ -29,7 +32,7 @@ if (!isset($_SESSION['user'])) {
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="icon" href="<?= $url ?>src/img/logo_ogc.png" type="image/icon">
+  <link rel="icon" href="<?= $url ?>src/img/default/logo_unsm_only.png" type="image/icon">
   <title><?= $title_page ?> | OGC</title>
   <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
 

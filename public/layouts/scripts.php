@@ -1,4 +1,5 @@
     </div>
+    <div class="loader-page"></div>
 
     <script src="<?= $url ?>src/js/popper.min.js"></script>
     <script src="<?= $url ?>src/js/bootstrap.min.js"></script>
@@ -15,7 +16,7 @@
         $(document).ready(function() {
             $('.select2').select2();
             $('#myTable').DataTable({
-
+                responsive: true,
                 language: {
                     "decimal": "",
                     "emptyTable": "No hay información",
@@ -37,7 +38,32 @@
                     }
                 }
             });
-    
+
+            //Summernote
+            $('#summernote').summernote({
+                placeholder: 'Escribe aquí la descripción de la noticia...',
+                height: 400,
+                toolbar: [
+                    ['style', ['style']],
+                    ['font', ['bold', 'underline', 'clear']],
+                    ['color', ['color']],
+                    ['para', ['ul', 'ol', 'paragraph']],
+                    ['table', ['table']],
+                    ['insert', ['link']],
+                    ['view', ['fullscreen', 'codeview', 'help']]
+                ]
+            });
+
+            $(window).on('load', function() {
+                setTimeout(function() {
+                    $(".loader-page").css({
+                        visibility: "hidden",
+                        opacity: "0"
+                    })
+                }, 2000);
+
+            });
+
         });
     </script>
     </body>

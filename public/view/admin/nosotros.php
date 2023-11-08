@@ -9,65 +9,29 @@ if (isset($_POST['update'])) {
   $d = $_POST['vision'];
 
 
-  if ($_FILES['portada']['name'] != "") {
+  if (!empty($_FILES['portada']['name'])) {
 
     //Subir la imagen al servidor
     $imagen = "../../../src/img/uploads/" . $_FILES['portada']['name'];
     $imagenUrl = "src/img/uploads/" . $_FILES['portada']['name'];
     move_uploaded_file($_FILES['portada']['tmp_name'], $imagen);
 
-    $stmt = $base->prepare('UPDATE nosotros SET
-                            titulo = ?,
-                            descripcio_empresa=?,
-                            mision = ?,
-                            vision=?,
-                            portada=?
-                            WHERE idnosotros = 1');
-    $result = $stmt->execute(array(
-      $a,
-      $b,
-      $c,
-      $d,
-      $imagenUrl
-    ));
-    $result = $stmt->fetch(PDO::FETCH_ASSOC);
-  }
-  if ($_FILES['ogranigrama']['name'] != "") {
-    $imagen = "../../../src/img/uploads/" . $_FILES['ogranigrama']['name'];
-    $imagenUrl = "src/img/uploads/" . $_FILES['ogranigrama']['name'];
-    move_uploaded_file($_FILES['ogranigrama']['tmp_name'], $imagen);
+    $stmt = $base->prepare('UPDATE nosotros SET titulo = ?, descripcion_nosotros=?,mision = ?, vision=?, portada=? WHERE idnosotros = 1');
+    $result = $stmt->execute(array($a, $b, $c, $d, $imagenUrl));
 
-    $stmt = $base->prepare('UPDATE nosotros SET
-                            titulo = ?,
-                            descripcion_nosotros=?,
-                            mision = ?,
-                            vision=?,
-                            ogranigrama=?
-                            WHERE idnosotros = 1');
-    $result = $stmt->execute(array(
-      $a,
-      $b,
-      $c,
-      $d,
-      $imagenUrl
-    ));
-    $result = $stmt->fetch(PDO::FETCH_ASSOC);
+  } 
+  if (!empty($_FILES['organigrama']['name'])) {
+    $imagen = "../../../src/img/uploads/" . $_FILES['organigrama']['name'];
+    $imagenUrl = "src/img/uploads/" . $_FILES['organigrama']['name'];
+    move_uploaded_file($_FILES['organigrama']['tmp_name'], $imagen);
+
+    $stmt = $base->prepare('UPDATE nosotros SET titulo = ?, descripcion_nosotros=?, mision = ?, vision=?, organigrama=? WHERE idnosotros = 1');
+    $result = $stmt->execute(array($a, $b, $c, $d, $imagenUrl));
   }
-  if ($_FILES['portada']['name'] == "" || $_FILES['organigrama']['name'] == "") {
-    $stmt = $base->prepare('UPDATE nosotros SET
-                            titulo = ?,
-                            descripcion_nosotros=?,
-                            mision = ?,
-                            vision=?
-                            WHERE idnosotros = 1');
-    $result = $stmt->execute(array(
-      $a,
-      $b,
-      $c,
-      $d,
-    ));
-    $result = $stmt->fetch(PDO::FETCH_ASSOC);
-  }
+
+  $stmt = $base->prepare('UPDATE nosotros SET titulo = ?, descripcion_nosotros=?, mision = ?,vision=? WHERE idnosotros = 1');
+  $result = $stmt->execute(array($a, $b, $c, $d));
+  $result = $stmt->fetch(PDO::FETCH_ASSOC);
 
   if ($result) {
     echo '<script type="text/javascript">window.location="' . $url . 'public/view/admin/datos";</script>';
@@ -103,7 +67,7 @@ $data = $stmt->fetch(PDO::FETCH_ASSOC);
       <p class="text-secondary bg-dark border-bottom px-4 py-2">
         <i class="fa fa-info-circle text-warning"></i>
         Todos los cambios los puedes verificar
-        <a href="<?= $url ?>public/view/nosotros" target="_blank" class="font-weight-bold text-warning">aquí <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+        <a href="<?= $url ?>nosotros" target="_blank" class="font-weight-bold text-warning">aquí <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
       </p>
 
       <form method="post" class="bg-white px-4 py-2" enctype="multipart/form-data">
@@ -114,15 +78,15 @@ $data = $stmt->fetch(PDO::FETCH_ASSOC);
         <div class="form-row">
           <div class="form-group col-md-4">
             <label>Descripción</label>
-            <textarea class="form-control" required name="descripcion_nosotros" style="height:200px"><?= $data['descripcion_nosotros'] ?></textarea>
+            <textarea class="form-control" minlength="50" maxlength="255" required name="descripcion_nosotros" style="height:200px"><?= $data['descripcion_nosotros'] ?></textarea>
           </div>
           <div class="form-group col-md-4">
             <label>Misión</label>
-            <textarea class="form-control" required name="mision" style="height:200px"><?= $data['mision'] ?></textarea>
+            <textarea class="form-control" minlength="30" maxlength="255" required name="mision" style="height:200px"><?= $data['mision'] ?></textarea>
           </div>
           <div class="form-group col-md-4">
             <label>Visión</label>
-            <textarea class="form-control" required name="vision" style="height:200px"><?= $data['vision'] ?></textarea>
+            <textarea class="form-control" minlength="30" maxlength="255" required name="vision" style="height:200px"><?= $data['vision'] ?></textarea>
           </div>
         </div>
         <div class="form-row">
@@ -135,11 +99,11 @@ $data = $stmt->fetch(PDO::FETCH_ASSOC);
           <div class="form-group col-md-6">
             <div class="mb-3">
               <label for="formFile2" class="form-label">Organigrama</label>
-              <input class="form-control" accept="image/*" name="ogranigrama" type="file" id="formFile2">
+              <input class="form-control" accept="image/*" name="organigrama" type="file" id="formFile2">
             </div>
           </div>
         </div>
-        <button type="submit" name="update" class="btn btn-success px-3 fw-bolder"><i class="fa-solid fa-rotate me-1"></i> Actualizar <?=$title_page?></button>
+        <button type="submit" name="update" class="btn btn-success px-3 fw-bolder"><i class="fa-solid fa-rotate me-1"></i> Actualizar <?= $title_page ?></button>
       </form>
     </div>
   </section>

@@ -49,7 +49,7 @@ if (isset($_POST['edit'])) {
     }
 }
 
-$stmt = $base->prepare('SELECT p.idpersonal, p.estado,pn.nombres,pn.apellidos,c.descripcion from personal as p
+$stmt = $base->prepare('SELECT * from personal as p
 inner join persona_natural as pn on (pn.idpersona_natural=p.idpersona_natural)
 inner join cargo as c on (c.idcargo=p.idcargo)');
 $data = $stmt->execute();
@@ -89,7 +89,7 @@ $data3 = $stmt->fetchAll(PDO::FETCH_OBJ);
             <p class="text-secondary bg-dark border-bottom px-4 py-2">
                 <i class="fa fa-info-circle text-warning"></i>
                 Todos los cambios los puedes verificar
-                <a href="<?= $url ?>public/view/nosotros" target="_blank" class="font-weight-bold text-warning">aquí <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+                <a href="<?= $url ?>personal" target="_blank" class="font-weight-bold text-warning">aquí <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
             </p>
             <div class="d-flex justify-content-center">
                 <p>
@@ -107,6 +107,7 @@ $data3 = $stmt->fetchAll(PDO::FETCH_OBJ);
                         <thead>
                             <tr>
                                 <th class="text-center">#</th>
+                                <th class="text-center">Foto</th>
                                 <th>Nombres y apellidos</th>
                                 <th>Cargo</th>
                                 <th>Acciones</th>
@@ -117,6 +118,7 @@ $data3 = $stmt->fetchAll(PDO::FETCH_OBJ);
                             foreach ($data as $v1) : ?>
                                 <tr>
                                     <td class="text-center"><?= $count ?></td>
+                                    <td class="text-center img-table"><img src="<?= $url.$v1->foto ?>" style="width:40px; height:40px; border-radius:50px"></td>
                                     <td><?= $v1->nombres . ' ' . $v1->apellidos ?></td>
                                     <td><?= $v1->descripcion ?></td>
                                     <td>

@@ -1,17 +1,35 @@
 <?php
 $title = "OGC | UNSM";
-$active1 = "active";
-$active2 = "";
-$active3 = "";
 include "public/layouts/header.php";
+$active1 = "active";
 
-$stmt = $base->prepare('select * from nosotros ');
+$stmt = $base->prepare('SELECT * from nosotros ');
 $data = $stmt->execute();
 $data = $stmt->fetch(PDO::FETCH_ASSOC);
 
-$stmt = $base->prepare('select * from enlace where estado_enlace = 1');
+$stmt = $base->prepare('SELECT * from enlace where estado_enlace = 1');
 $data2 = $stmt->execute();
 $data2 = $stmt->fetchAll(PDO::FETCH_OBJ);
+
+$stmt = $base->prepare('SELECT * from carrusel where estado_carrusel = 1 order by idcarrusel asc limit 1');
+$slider1 = $stmt->execute();
+$slider1 = $stmt->fetch(PDO::FETCH_ASSOC);
+if($slider1){
+    $idcarrusel = $slider1['idcarrusel'];
+
+    $stmt = $base->prepare('SELECT * from carrusel where estado_carrusel = 1 AND idcarrusel != ? ');
+    $slider2 = $stmt->execute(array($idcarrusel));
+    $slider2 = $stmt->fetchAll(PDO::FETCH_OBJ);
+}
+
+$stmt = $base->prepare('SELECT * from noticia where estado_noticia=1 order by idnoticia desc limit 2');
+$noticia1 = $stmt->execute();
+$noticia1 = $stmt->fetchAll(PDO::FETCH_OBJ);
+
+$stmt = $base->prepare('SELECT * from noticia where estado_noticia=1 order by idnoticia asc limit 2');
+$noticia2 = $stmt->execute();
+$noticia2 = $stmt->fetchAll(PDO::FETCH_OBJ);
+
 
 ?>
 <?php include "public/layouts/navbar.php"; ?>
@@ -20,19 +38,35 @@ $data2 = $stmt->fetchAll(PDO::FETCH_OBJ);
     <div class="container-fluid p-0">
         <div id="carouselExampleInterval" class="carousel slide carousel-fade slider" data-bs-ride="carousel" style="height: 450px; overflow: hidden;">
             <div class="carousel-inner">
-                <div class="carousel-item active">
-                    <img src="<?= $url ?>src/img/default/slider1.jpg" class="d-block w-100" alt="...">
+                <?php if($slider1){?>
+                <div class="carousel-item active position-relative">
+                    <img src="<?= $url.$slider1['imagen_carrusel'];?>" class="d-block w-100" alt="...">
+                    <div class="container-fluid float-slider">
+                        <div class="container float-slider-text text-uppercase">
+                            <h1><?=$slider1['titulo_carrusel'];  ?></h1>
+                            <p><?=$slider1['descripcion_carrusel'];  ?></p>
+                        </div>
+                    </div>
                 </div>
-                <div class="carousel-item" >
-                    <img src="<?= $url?>src/img/default/slider2.jpg"  class="d-block w-100" alt="...">
-                </div>
+                <?php foreach ($slider2 as $v) : ?>
+                    <div class="carousel-item position-relative">
+                        <img src="<?= $url . $v->imagen_carrusel ?>" class="d-block w-100" alt="...">
+                        <div class="container-fluid float-slider">
+                            <div class="container float-slider-text text-uppercase">
+                                <h1><?= $v->titulo_carrusel ?></h1>
+                                <p><?= $v->descripcion_carrusel ?></p>
+                            </div>
+                        </div>
+                    </div>
+                <?php endforeach; ?>
+                <?php }?>
             </div>
             <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleInterval" data-bs-slide="prev">
-                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="carousel-control-prev-icon me-5" aria-hidden="true"></span>
                 <span class="visually-hidden">Previous</span>
             </button>
             <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleInterval" data-bs-slide="next">
-                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="carousel-control-next-icon ms-5" aria-hidden="true"></span>
                 <span class="visually-hidden">Next</span>
             </button>
         </div>
@@ -41,63 +75,69 @@ $data2 = $stmt->fetchAll(PDO::FETCH_OBJ);
 <section class="mt-5">
     <div class="container d-flex col-12">
         <div class="col-8 pe-5">
-            <h4 class="text-success fw-bold">Noticias</h4>
-            <hr class="text-secondary">
-            <div id="carouselExample" class="carousel slide">
+            <div class="position-relative">
+                <h4 class="text-success pb-3 fw-bold bb-title">Noticias</h4>
+            </div>
+            <div id="carouselExample" class="carousel slide carousel-fade">
                 <div class="carousel-inner">
                     <div class="carousel-item active">
                         <div class="d-flex gap-1 me-1">
-                            <div class="col-6 border d-flex justify-content-center align-items-center" style="height:200px;box-shadow: rgba(0, 0, 0, 0.05) 0px 6px 24px 0px, rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;">
-                                <a href="https://enlinea.sunedu.gob.pe/">
-                                    <div class="w-100 bg-white py-3 fw-bold text-success">
-                                        <span>Noticia 1.1</span>
-                                    </div>
-                                </a>
-                            </div>
-                            <div class="col-6 border d-flex justify-content-center align-items-center" style="height:200px;box-shadow: rgba(0, 0, 0, 0.05) 0px 6px 24px 0px, rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;">
-                                <a href="https://enlinea.sunedu.gob.pe/">
-                                    <div class="w-100 bg-white py-3 fw-bold text-success">
-                                        <span>Noticia 2</span>
-                                    </div>
-                                </a>
-                            </div>
+                            <?php foreach ($noticia1 as $v) : ?>
+                                <?php
+                                $datetime = new DateTime($v->post_noticia);
+                                $fecha_formateada = $datetime->format('j \d\e F \d\e Y \a \l\a\s H:i:s');
+                                ?>
+                                <div class="col-6 border d-flex" style="background: url('<?= $url . $v->imagen_noticia ?>') center center no-repeat;background-size: cover; height:200px">
+                                    <a href="<?= $url ?>noticias/ver?id=<?= $v->idnoticia ?>" class="d-flex justify-content-center align-items-center position-relative" style="background-color: rgba(0, 0, 0, 0.5);min-width:100%">
+                                        <div class="p-5 text-center fw-light text-white fst-italic">
+                                            <?= $v->titulo_noticia ?><br>
+                                        </div>
+                                        <div class="float-mas py-2 px-3">
+                                            Leer más +
+                                        </div>
+                                    </a>
+                                </div>
+                            <?php endforeach; ?>
                         </div>
                     </div>
                     <div class="carousel-item">
                         <div class="d-flex gap-1 me-1">
-                            <div class="col-6 border d-flex justify-content-center align-items-center" style="height:200px;box-shadow: rgba(0, 0, 0, 0.05) 0px 6px 24px 0px, rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;">
-                                <a href="https://enlinea.sunedu.gob.pe/">
-                                    <div class="w-100 bg-white py-3 fw-bold text-success">
-                                        <span>Noticia 3</span>
-                                    </div>
-                                </a>
-                            </div>
-                            <div class="col-6 border d-flex justify-content-center align-items-center" style="height:200px;box-shadow: rgba(0, 0, 0, 0.05) 0px 6px 24px 0px, rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;">
-                                <a href="https://enlinea.sunedu.gob.pe/">
-                                    <div class="w-100 bg-white py-3 fw-bold text-success">
-                                        <span>Noticia 4</span>
-                                    </div>
-                                </a>
-                            </div>
+                            <?php foreach ($noticia2 as $v) : ?>
+                                <?php
+                                $datetime = new DateTime($v->post_noticia);
+                                $fecha_formateada = $datetime->format('j \d\e F \d\e Y \a \l\a\s H:i:s');
+                                ?>
+                                <div class="col-6 border d-flex" style="background: url('<?= $url . $v->imagen_noticia ?>') center center no-repeat;background-size: cover; height:200px">
+                                    <a href="<?= $url ?>noticias/ver?id=<?= $v->idnoticia ?>" class="d-flex justify-content-center align-items-center position-relative" style="background-color: rgba(0, 0, 0, 0.5);">
+                                        <div class="p-5 text-center fw-light text-white fst-italic">
+                                            <?= $v->titulo_noticia ?><br>
+                                        </div>
+                                        <div class="float-mas py-2 px-3">
+                                            Leer más +
+                                        </div>
+                                    </a>
+                                </div>
+                            <?php endforeach; ?>
                         </div>
                     </div>
                 </div>
-                <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
-                    <i class="carousel-control-prev-icon text-secondary fa fa-angle-left fs-1" aria-hidden="true"></i>
+                <button class="carousel-control-prev position-relative" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon me-5" aria-hidden="true"></span>
                     <span class="visually-hidden">Previous</span>
                 </button>
-                <button class="carousel-control-next" type="button" data-bs-target="#carouselExample" data-bs-slide="next">
-                    <i class="carousel-control-next-icon text-secondary fa fa-angle-right fs-1" aria-hidden="true"></i>
+                <button class="carousel-control-next position-relative" type="button" data-bs-target="#carouselExample" data-bs-slide="next">
+                    <span class="carousel-control-next-icon ms-5" aria-hidden="true"></span>
                     <span class="visually-hidden">Next</span>
                 </button>
             </div>
         </div>
         <div class="col-4">
-            <h4 class="text-success fw-bold d-flex justify-content-between">
-                <span>Próximos Eventos</span>
-                <span><a href="#"><i class="fa fa-plus text-success fs-6"></i></a></span>
-            </h4>
-            <hr class="text-secondary">
+            <div class="position-relative">
+                <h4 class="text-success pb-3 fw-bold d-flex justify-content-between bb-title">
+                    <span>Próximos Eventos</span>
+                    <span><a href="#"><i class="fa fa-plus text-success fs-6"></i></a></span>
+                </h4>
+            </div>
             <ul class="events m-0 p-0" style="list-style:none">
                 <li class="event mb-2">
                     <a href="#" class="d-flex border rounded p-1">
@@ -132,18 +172,18 @@ $data2 = $stmt->fetchAll(PDO::FETCH_OBJ);
             <hr class="text-white">
             <div class="container text-center p-0">
                 <div class="row flex-wrap">
-                    <?php foreach($data2 as $v1):?>
+                    <?php foreach ($data2 as $v1) : ?>
                         <div class="col-md-4 p-2">
-                        <div class="col rounded">
-                            <a href="<?=$v1->url_enlace?>" target="_blank">
-                                <div class="w-100 bg-white py-3 fw-bold text-success">
-                                    <?=$v1->icono_enlace?>
-                                    <span><?=$v1->titulo_enlace?></span>
-                                </div>
-                            </a>
+                            <div class="col rounded">
+                                <a href="<?= $v1->url_enlace ?>" target="_blank">
+                                    <div class="w-100 bg-white py-3 fw-bold text-success">
+                                        <?= $v1->icono_enlace ?>
+                                        <span><?= $v1->titulo_enlace ?></span>
+                                    </div>
+                                </a>
+                            </div>
                         </div>
-                        </div>
-                    <?php endforeach;?>
+                    <?php endforeach; ?>
                 </div>
             </div>
         </div>
