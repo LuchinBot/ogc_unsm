@@ -59,6 +59,14 @@
           </a>
         </li>
         <li class="nav-item">
+          <a href="<?= $url ?>public/view/admin/personal" class="nav-link">
+            <i class="nav-icon fa fa-users"></i>
+            <p>
+              Nuestro Personal
+            </p>
+          </a>
+        </li>
+        <li class="nav-item">
           <a href="<?= $url ?>public/view/admin/carrusel" class="nav-link">
             <i class="nav-icon fa fa-image"></i>
             <p>
@@ -79,6 +87,22 @@
             <i class="nav-icon fa fa-calendar-days"></i>
             <p>
               Nuestros eventos
+            </p>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a href="<?= $url ?>public/view/admin/galeria" class="nav-link">
+            <i class="nav-icon fa-solid fa-photo-film"></i>
+            <p>
+              Nuestra Galería
+            </p>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a href="<?= $url ?>public/view/admin/enlaces" class="nav-link">
+            <i class="nav-icon fa fa-link"></i>
+            <p>
+              Nuestros Enlaces
             </p>
           </a>
         </li>
@@ -113,18 +137,6 @@
               <a href="<?= $url ?>public/view/admin/" class="nav-link">
                 <i class="fa fa-user nav-icon"></i>
                 <p>Cargos</p>
-              </a>
-            </li>
-            <li class="nav-item">
-              <a href="<?= $url ?>public/view/admin/personal" class="nav-link">
-                <i class="fa fa-user nav-icon"></i>
-                <p>Personal</p>
-              </a>
-            </li>
-            <li class="nav-item">
-              <a href="<?= $url ?>public/view/admin/enlaces" class="nav-link">
-                <i class="fa fa-user nav-icon"></i>
-                <p>Enlaces</p>
               </a>
             </li>
           </ul>

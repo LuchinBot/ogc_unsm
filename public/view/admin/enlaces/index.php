@@ -11,9 +11,8 @@ if (isset($_POST['add'])) {
     $stmt = $base->prepare('INSERT INTO enlace(titulo_enlace,icono_enlace,url_enlace) values(?,?,?)');
     $result = $stmt->execute(array($a, $b, $c));
     $result = $stmt->fetch(PDO::FETCH_ASSOC);
-    if ($result) {
-        echo '<script type="text/javascript">window.location="' . $url . 'public/view/admin/' . $title_page . '";</script>';
-    }
+    echo '<script type="text/javascript">window.location="' . $url . 'public/view/admin/' . $title_page . '";</script>';
+
 }
 if (isset($_POST['edit'])) {
     $id = $_POST['idenlace'];

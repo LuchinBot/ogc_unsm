@@ -14,7 +14,7 @@ $active5 = "";
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  
+
   <!--Icon-->
   <link rel="icon" href="<?= $url ?>src/img/default/logo_unsm_only.png" type="image/icon">
   <title><?= $title ?></title>
@@ -33,7 +33,8 @@ $active5 = "";
   <link href="<?= $url ?>src/plugins/fontawesome/css/all.min.css" rel="stylesheet">
   <link href="<?= $url ?>src/plugins/fontawesome/css/solid.min.css" rel="stylesheet">
   <link href="<?= $url ?>src/plugins/fontawesome/css/brands.min.css" rel="stylesheet">
-
+  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.umd.js"></script>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.css" />
 
 </head>
 

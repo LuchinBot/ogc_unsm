@@ -17,9 +17,7 @@ if (isset($_POST['add'])) {
         $stmt = $base->prepare('INSERT INTO noticia(titulo_noticia,subtitulo_noticia,descripcion_noticia,imagen_noticia,post_noticia) values(?,?,?,?,?)');
         $result = $stmt->execute(array($a, $b, $c, $imagenUrl, $d));
         $result = $stmt->fetch(PDO::FETCH_ASSOC);
-        if ($result) {
-            echo '<script type="text/javascript">window.location="' . $url . 'public/view/admin/noticias";</script>';
-        }
+        echo '<script type="text/javascript">window.location="' . $url . 'public/view/admin/noticias";</script>';
     }
 }
 if (isset($_POST['edit'])) {
@@ -41,9 +39,7 @@ if (isset($_POST['edit'])) {
         $result = $stmt->execute(array($a, $b, $c, $id));
         $result = $stmt->fetch(PDO::FETCH_ASSOC);
     }
-    if ($result) {
-        echo '<script type="text/javascript">window.location="' . $url . 'public/view/admin/noticias";</script>';
-    }
+    echo '<script type="text/javascript">window.location="' . $url . 'public/view/admin/noticias";</script>';
 }
 
 $stmt = $base->prepare('SELECT * from noticia');

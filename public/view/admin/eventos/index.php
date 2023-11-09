@@ -19,9 +19,8 @@ if (isset($_POST['add'])) {
         $stmt = $base->prepare('INSERT INTO evento(titulo_evento,subtitulo_evento,descripcion_evento,imagen_evento,post_evento) values(?,?,?,?,?)');
         $result = $stmt->execute(array($a, $b, $c, $imagenUrl, $d));
         $result = $stmt->fetch(PDO::FETCH_ASSOC);
-        if ($result) {
-            echo '<script type="text/javascript">window.location="' . $url . 'public/view/admin/eventos";</script>';
-        }
+        echo '<script type="text/javascript">window.location="' . $url . 'public/view/admin/eventos";</script>';
+
     }
 }
 if (isset($_POST['edit'])) {
@@ -43,9 +42,8 @@ if (isset($_POST['edit'])) {
         $result = $stmt->execute(array($a, $b, $c, $id));
         $result = $stmt->fetch(PDO::FETCH_ASSOC);
     }
-    if ($result) {
-        echo '<script type="text/javascript">window.location="' . $url . 'public/view/admin/eventos";</script>';
-    }
+    echo '<script type="text/javascript">window.location="' . $url . 'public/view/admin/eventos";</script>';
+
 }
 
 $stmt = $base->prepare('SELECT * from evento');

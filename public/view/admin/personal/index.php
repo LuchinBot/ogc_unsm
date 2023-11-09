@@ -17,9 +17,7 @@ if (isset($_POST['add'])) {
         $stmt = $base->prepare('INSERT INTO personal(idpersona_natural,idcargo,foto,facebook,linkedin) values(?,?,?,?,?)');
         $result = $stmt->execute(array($a, $b, $imagenUrl, $c, $d));
         $result = $stmt->fetch(PDO::FETCH_ASSOC);
-        if ($result) {
-            echo '<script type="text/javascript">window.location="' . $url . 'public/view/admin/personal";</script>';
-        }
+        echo '<script type="text/javascript">window.location="' . $url . 'public/view/admin/personal";</script>';
     }
 }
 if (isset($_POST['edit'])) {
@@ -42,9 +40,7 @@ if (isset($_POST['edit'])) {
         $result = $stmt->execute(array($a, $b, $c, $d, $id));
         $result = $stmt->fetch(PDO::FETCH_ASSOC);
     }
-    if ($result) {
-        echo '<script type="text/javascript">window.location="' . $url . 'public/view/admin/personal";</script>';
-    }
+    echo '<script type="text/javascript">window.location="' . $url . 'public/view/admin/personal";</script>';
 }
 
 $stmt = $base->prepare('SELECT * from personal as p

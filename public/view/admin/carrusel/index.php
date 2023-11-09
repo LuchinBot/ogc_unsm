@@ -15,11 +15,7 @@ if (isset($_POST['add'])) {
         $stmt = $base->prepare('INSERT INTO carrusel(titulo_carrusel,descripcion_carrusel,imagen_carrusel) values(?,?,?)');
         $result = $stmt->execute(array($a, $b, $imagenUrl));
         $result = $stmt->fetch(PDO::FETCH_ASSOC);
-        if ($result) {
-            echo '<script type="text/javascript">window.location="' . $url . 'public/view/admin/carrusel";</script>';
-            exit();
-
-        }
+        echo '<script type="text/javascript">window.location="' . $url . 'public/view/admin/carrusel";</script>';
     }
 }
 if (isset($_POST['edit'])) {
@@ -40,11 +36,7 @@ if (isset($_POST['edit'])) {
         $result = $stmt->execute(array($a, $b, $id));
         $result = $stmt->fetch(PDO::FETCH_ASSOC);
     }
-    if ($result) {
-        echo '<script type="text/javascript">window.location="' . $url . 'public/view/admin/carrusel";</script>';
-        exit();
-
-    }
+    echo '<script type="text/javascript">window.location="' . $url . 'public/view/admin/carrusel";</script>';
 }
 
 $stmt = $base->prepare('SELECT * from carrusel');
