@@ -33,8 +33,8 @@ if (isset($_GET['ver'])) {
                             <div class="position-relative">
                                 <h4 class="text-dark pb-3 fw-bold bb-title"><?= $data['titulo_noticia'] ?></h4>
                             </div>
-                            <div class="mt-3 text-secondary">
-                                <?= $data['descripcion_noticia'] ?>
+                            <div class="mt-3 text-secondary" style="overflow-wrap: anywhere;">
+                            <?= $data['descripcion_noticia'] ?>
                             </div>
                         </div>
                     </div>

@@ -88,7 +88,7 @@ $noticia2 = $stmt->fetchAll(PDO::FETCH_OBJ);
                                 $fecha_formateada = $datetime->format('j \d\e F \d\e Y \a \l\a\s H:i:s');
                                 ?>
                                 <div class="col-6 border d-flex" style="background: url('<?= $url . $v->imagen_noticia ?>') center center no-repeat;background-size: cover; height:200px">
-                                    <a href="<?= $url ?>noticias/ver?id=<?= $v->idnoticia ?>" class="d-flex justify-content-center align-items-center position-relative" style="background-color: rgba(0, 0, 0, 0.5);min-width:100%">
+                                    <a href="<?= $url ?>noticia?ver=<?= $v->idnoticia ?>" class="d-flex justify-content-center align-items-center position-relative" style="background-color: rgba(0, 0, 0, 0.5);min-width:100%">
                                         <div class="p-5 text-center fw-light text-white fst-italic">
                                             <?= $v->titulo_noticia ?><br>
                                         </div>
@@ -108,7 +108,7 @@ $noticia2 = $stmt->fetchAll(PDO::FETCH_OBJ);
                                 $fecha_formateada = $datetime->format('j \d\e F \d\e Y \a \l\a\s H:i:s');
                                 ?>
                                 <div class="col-6 border d-flex" style="background: url('<?= $url . $v->imagen_noticia ?>') center center no-repeat;background-size: cover; height:200px">
-                                    <a href="<?= $url ?>noticias/ver?id=<?= $v->idnoticia ?>" class="d-flex justify-content-center align-items-center position-relative" style="background-color: rgba(0, 0, 0, 0.5);">
+                                    <a href="<?= $url ?>noticia?ver=<?= $v->idnoticia ?>" class="d-flex justify-content-center align-items-center position-relative" style="background-color: rgba(0, 0, 0, 0.5);">
                                         <div class="p-5 text-center fw-light text-white fst-italic">
                                             <?= $v->titulo_noticia ?><br>
                                         </div>

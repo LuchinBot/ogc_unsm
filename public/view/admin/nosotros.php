@@ -69,7 +69,7 @@ $data = $stmt->fetch(PDO::FETCH_ASSOC);
         <a href="<?= $url ?>nosotros" target="_blank" class="font-weight-bold text-warning">aquí <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
       </p>
 
-      <form method="post" id="validateForm" class="bg-white px-4 py-2" enctype="multipart/form-data" action="javascript: alert('submited')">
+      <form method="post" id="validateForm" class="bg-white px-4 py-2" enctype="multipart/form-data">
         <fieldset>
           <div class="form-group">
             <label>Titulo <span class="text-danger">*</span></label>

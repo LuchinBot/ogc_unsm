@@ -34,9 +34,9 @@ if (isset($_GET['ver'])) {
                         </div>
                         <div class="p-5">
                             <div class="position-relative">
-                                <h4 class="text-dark pb-3 fw-bold bb-title"><?= $data['titulo_evento'] ?></h4>
+                                <h4 class="text-dark pb-3 fw-bold bb-title" style="overflow-wrap: anywhere;"><?= $data['titulo_evento'] ?></h4>
                             </div>
-                            <div class="mt-3 text-secondary">
+                            <div class="mt-3 text-secondary" style="overflow-wrap: anywhere;">
                                 <?= $data['descripcion_evento'] ?>
                             </div>
                             <div class="position-relative">
@@ -65,7 +65,7 @@ if (isset($_GET['ver'])) {
                             <a href="" class="d-flex noticia-mini pb-2 border-bottom">
                                 <div class="noticia-img" style="background: url('<?= $url . $v->imagen_evento ?>') center center no-repeat;background-size: cover;">
                                 </div>
-                                <div class="card-body py-0 text-secondary noticia-text fst-italic">
+                                <div class="card-body py-0 text-secondary noticia-text fst-italic" style="overflow-wrap: anywhere;">
                                     <?= $v->titulo_evento ?>
                                 </div>
                             </a>

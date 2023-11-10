@@ -32,7 +32,7 @@ $data2 = $stmt->fetchAll(PDO::FETCH_OBJ);
                         </div>
                         <div class="card-body py-2 fst-italic">
                             <small class="text-secondary">Publicado el <?=  $fecha_formateada ?> </small>
-                            <h5 class="card-title text-dark fw-light mt-2"><?= $v->titulo_noticia ?></h5>
+                            <h5 class="card-title text-dark fw-light mt-2" style="overflow-wrap: anywhere;"><?= $v->titulo_noticia ?></h5>
                         </div>
                     </a>
                 </div>
@@ -47,7 +47,7 @@ $data2 = $stmt->fetchAll(PDO::FETCH_OBJ);
                     <a href="" class="d-flex noticia-mini pb-2 border-bottom">
                         <div class="noticia-img" style="background: url('<?= $url . $v->imagen_noticia ?>') center center no-repeat;background-size: cover;">
                         </div>
-                        <div class="card-body py-0 text-secondary noticia-text fst-italic">
+                        <div class="card-body py-0 text-secondary noticia-text fst-italic" style="overflow-wrap: anywhere;">
                         <?= $v->titulo_noticia ?>
                         </div>
                     </a>
