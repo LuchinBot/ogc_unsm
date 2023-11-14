@@ -14,7 +14,7 @@ $data2 = $stmt->fetchAll(PDO::FETCH_OBJ);
 $stmt = $base->prepare('SELECT * from carrusel where estado_carrusel = 1 order by idcarrusel asc limit 1');
 $slider1 = $stmt->execute();
 $slider1 = $stmt->fetch(PDO::FETCH_ASSOC);
-if($slider1){
+if ($slider1) {
     $idcarrusel = $slider1['idcarrusel'];
 
     $stmt = $base->prepare('SELECT * from carrusel where estado_carrusel = 1 AND idcarrusel != ? ');
@@ -30,6 +30,11 @@ $stmt = $base->prepare('SELECT * from noticia where estado_noticia=1 order by id
 $noticia2 = $stmt->execute();
 $noticia2 = $stmt->fetchAll(PDO::FETCH_OBJ);
 
+$stmt = $base->prepare('SELECT * from evento where estado_evento=1 order by idevento asc limit 3');
+$eventos = $stmt->execute();
+$eventos = $stmt->fetchAll(PDO::FETCH_OBJ);
+
+
 
 ?>
 <?php include "public/layouts/navbar.php"; ?>
@@ -38,28 +43,28 @@ $noticia2 = $stmt->fetchAll(PDO::FETCH_OBJ);
     <div class="container-fluid p-0">
         <div id="carouselExampleInterval" class="carousel slide carousel-fade slider" data-bs-ride="carousel" style="height: 450px; overflow: hidden;">
             <div class="carousel-inner">
-                <?php if($slider1){?>
-                <div class="carousel-item active position-relative">
-                    <img src="<?= $url.$slider1['imagen_carrusel'];?>" class="d-block w-100" alt="...">
-                    <div class="container-fluid float-slider">
-                        <div class="container float-slider-text text-uppercase">
-                            <h1><?=$slider1['titulo_carrusel'];  ?></h1>
-                            <p><?=$slider1['descripcion_carrusel'];  ?></p>
-                        </div>
-                    </div>
-                </div>
-                <?php foreach ($slider2 as $v) : ?>
-                    <div class="carousel-item position-relative">
-                        <img src="<?= $url . $v->imagen_carrusel ?>" class="d-block w-100" alt="...">
+                <?php if ($slider1) { ?>
+                    <div class="carousel-item active position-relative">
+                        <img src="<?= $url . $slider1['imagen_carrusel']; ?>" class="d-block w-100" alt="...">
                         <div class="container-fluid float-slider">
                             <div class="container float-slider-text text-uppercase">
-                                <h1><?= $v->titulo_carrusel ?></h1>
-                                <p><?= $v->descripcion_carrusel ?></p>
+                                <h1><?= $slider1['titulo_carrusel'];  ?></h1>
+                                <p><?= $slider1['descripcion_carrusel'];  ?></p>
                             </div>
                         </div>
                     </div>
-                <?php endforeach; ?>
-                <?php }?>
+                    <?php foreach ($slider2 as $v) : ?>
+                        <div class="carousel-item position-relative">
+                            <img src="<?= $url . $v->imagen_carrusel ?>" class="d-block w-100" alt="...">
+                            <div class="container-fluid float-slider">
+                                <div class="container float-slider-text text-uppercase">
+                                    <h1><?= $v->titulo_carrusel ?></h1>
+                                    <p><?= $v->descripcion_carrusel ?></p>
+                                </div>
+                            </div>
+                        </div>
+                    <?php endforeach; ?>
+                <?php } ?>
             </div>
             <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleInterval" data-bs-slide="prev">
                 <span class="carousel-control-prev-icon me-5" aria-hidden="true"></span>
@@ -88,7 +93,7 @@ $noticia2 = $stmt->fetchAll(PDO::FETCH_OBJ);
                                 $fecha_formateada = $datetime->format('j \d\e F \d\e Y \a \l\a\s H:i:s');
                                 ?>
                                 <div class="col-6 border d-flex" style="background: url('<?= $url . $v->imagen_noticia ?>') center center no-repeat;background-size: cover; height:200px">
-                                    <a href="<?= $url ?>noticia?ver=<?= $v->idnoticia ?>" class="d-flex justify-content-center align-items-center position-relative" style="background-color: rgba(0, 0, 0, 0.5);min-width:100%">
+                                    <a href="noticia?ver=<?= $v->idnoticia ?>&title=<?= $v->titulo_noticia ?>" class="d-flex justify-content-center align-items-center position-relative" style="background-color: rgba(0, 0, 0, 0.5);min-width:100%">
                                         <div class="p-5 text-center fw-light text-white fst-italic">
                                             <?= $v->titulo_noticia ?><br>
                                         </div>
@@ -135,32 +140,28 @@ $noticia2 = $stmt->fetchAll(PDO::FETCH_OBJ);
             <div class="position-relative">
                 <h4 class="pb-3 fw-bold d-flex justify-content-between bb-title">
                     <span>Próximos Eventos</span>
-                    <span><a href="#"><i class="fa fa-plus text-success fs-6"></i></a></span>
+                    <span><a href="eventos"><i class="fa fa-plus text-success fs-6"></i></a></span>
                 </h4>
             </div>
             <ul class="events m-0 p-0" style="list-style:none">
-                <li class="event mb-2">
-                    <a href="#" class="d-flex border rounded p-1">
-                        <div class="d-flex text-dark p-2 flex-column justify-content-center align-items-center border text-center" style="box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 60px -12px inset, rgba(0, 0, 0, 0.3) 0px 18px 36px -18px inset;">
-                            <span style="font-size:30px">12</span>
-                            <span>Noviembre</span>
-                        </div>
-                        <div class="card-text ps-4 text-secondary" style="font-size:15px">
-                            <p>Simposio Internacional "La Calidad de la Educación Universitaria en debate: Licenciamiento y Acreditación"</p>
-                        </div>
-                    </a>
-                </li>
-                <li class="event mb-2">
-                    <a href="#" class="d-flex border rounded p-1">
-                        <div class="d-flex text-dark p-2 flex-column justify-content-center align-items-center border text-center" style="box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 60px -12px inset, rgba(0, 0, 0, 0.3) 0px 18px 36px -18px inset;">
-                            <span style="font-size:30px">12</span>
-                            <span>Noviembre</span>
-                        </div>
-                        <div class="card-text ps-4 text-secondary" style="font-size:15px">
-                            <p>Simposio Internacional "La Calidad de la Educación Universitaria en debate: Licenciamiento y Acreditación"</p>
-                        </div>
-                    </a>
-                </li>
+                <?php foreach ($eventos as $v) : ?>
+                    <?php
+                    $datetime = new DateTime($v->post_evento);
+                    $dia = $datetime->format('j');
+                    $mes = $datetime->format('F');
+                    ?>
+                    <li class="event mb-2">
+                        <a href="evento?ver=<?= $v->idevento ?>&title=<?= $v->titulo_evento ?>" class="d-flex border rounded p-1">
+                            <div class="d-flex text-dark p-2 flex-column justify-content-center align-items-center border text-center" style="box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 60px -12px inset, rgba(0, 0, 0, 0.3) 0px 18px 36px -18px inset;">
+                                <span style="font-size:30px"><?=$dia?></span>
+                                <span><?=$mes?></span>
+                            </div>
+                            <div class="card-text ps-4 text-secondary" style="font-size:15px">
+                                <p><?= $v->titulo_evento ?></p>
+                            </div>
+                        </a>
+                    </li>
+                <?php endforeach; ?>
             </ul>
         </div>
     </div>
@@ -175,7 +176,7 @@ $noticia2 = $stmt->fetchAll(PDO::FETCH_OBJ);
                     <?php foreach ($data2 as $v1) : ?>
                         <div class="col-md-4 p-2">
                             <div class="col rounded">
-                                <a href="<?= $v1->url_enlace ?>" target="_blank">
+                                <a href="<?= $v1->url_enlace ?>" target="_blank" style="text-transform: uppercase !important;">
                                     <div class="w-100 bg-white py-3 fw-bold text-success">
                                         <?= $v1->icono_enlace ?>
                                         <span><?= $v1->titulo_enlace ?></span>

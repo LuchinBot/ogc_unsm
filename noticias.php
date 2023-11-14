@@ -44,7 +44,7 @@ $data2 = $stmt->fetchAll(PDO::FETCH_OBJ);
             </div>
             <?php foreach ($data2 as $v) : ?>
                 <div class="col mt-3" style="position: relative;">
-                    <a href="" class="d-flex noticia-mini pb-2 border-bottom">
+                    <a href="noticia?ver=<?=$v->idnoticia?>&title=<?=$v->titulo_noticia?>" class="d-flex noticia-mini pb-2 border-bottom">
                         <div class="noticia-img" style="background: url('<?= $url . $v->imagen_noticia ?>') center center no-repeat;background-size: cover;">
                         </div>
                         <div class="card-body py-0 text-secondary noticia-text fst-italic" style="overflow-wrap: anywhere;">

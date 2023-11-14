@@ -1,23 +1,24 @@
 <?php
-require "src/db/conexion.php";
+require "public/layouts/database/connection.php";
 $url = "http://localhost/ogc_unsm/";
 session_start();
 $display = 0;
 if (isset($_SESSION['user'])) {
-  echo '<script type="text/javascript">window.location="' . $url . 'public/view/admin/";</script>';
+  echo '<script type="text/javascript">window.location="' . $url . 'public/view/";</script>';
 }
 
 if (isset($_POST['login'])) {
   $a = $_POST['user'];
   $b = $_POST['password'];
 
-  $stmt = $base->prepare('select * from usuario where username = ? and keypass = ? ');
+  $stmt = $base->prepare('select * from usuario as u inner join perfil as p on(p.idperfil = u.idperfil) where u.username = ? and u.keypass = ? ');
   $result = $stmt->execute(array($a, $b));
   $result = $stmt->fetch(PDO::FETCH_ASSOC);
 
   if ($result) {
     $_SESSION['user'] = $result['idusuario'];
-    echo '<script>window.location.href = "' . $url . 'public/view/admin/";</script>';
+    $_SESSION['perfil'] = $result['idperfil'];
+    echo '<script>window.location.href = "' . $url . 'public/view/";</script>';
   } else {
     $display = 1;
   }

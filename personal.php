@@ -55,7 +55,7 @@ $data2 = $stmt->fetch(PDO::FETCH_ASSOC);
             <span class="my-3 px-5 rounded text-white personal-title">Nuestro Ogranigrama</span>
         </div>
         <div class="col mt-5 pt-5">
-            <img src="<?= $url . $data['organigrama'] ?>" style="width: 100%;">
+            <img src="<?= $url . $data2['organigrama'] ?>" style="width: 100%;">
         </div>
     </div>
 </div>

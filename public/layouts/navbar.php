@@ -25,7 +25,7 @@
         </div>
         <div class="enlaces-top col-6 d-flex justify-content-end align-items-center">
             <ul class="d-flex m-0 p-0" style="list-style: none !important;">
-                <li class="nav-item"><a href="<?= $url ?>login">administración</a></li>
+                <li class="nav-item"><a href="https://unsm.edu.pe/">portal unsm</a></li>
             </ul>
         </div>
     </div>

@@ -60,8 +60,10 @@
                     ['view', ['fullscreen', 'codeview', 'help']]
                 ]
             });
-
-            $(window).on('load', function() {
+            $("#validateForm").validate({});
+        });
+        
+        $(window).on('load', function() {
                 setTimeout(function() {
                     $(".loader-page").css({
                         visibility: "hidden",
@@ -71,8 +73,6 @@
 
             });
 
-            $("#validateForm").validate({});
-        });
     </script>
     </body>
 

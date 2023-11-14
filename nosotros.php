@@ -12,7 +12,7 @@ $data = $stmt->fetch(PDO::FETCH_ASSOC);
 <div class="container d-flex py-3 justify-content-center align-items-center">
     <div class="col-6 pe-5">
         <p class="text-uppercase fs-6 text-secondary">Sobre nosotros</p>
-        <h1 style="font-size: 50px !important; line-height: 1; font-weight: 800;color: #5B627D;word-wrap: break-word  "><?=$data['titulo']?></h1>
+        <h2 style="font-size: 50px !important; line-height: 1; font-weight: 800;color: #5B627D;word-wrap: break-word  "><?=$data['titulo']?></h2>
         <p class="mt-3" style="word-wrap: break-word "><?=$data['descripcion_nosotros']?></p>
         <a href="<?= $url ?>public/view/contactos" class="btn bg-success text-white px-5 py-2">
             <i class="fa-solid fa-circle-info me-2"></i> Más información
