@@ -127,8 +127,8 @@ $data = $stmt->fetchAll(PDO::FETCH_OBJ);
                                     <input type="text" name="titulo_enlace" class="form-control" placeholder="" required title="Campo requerido">
                                 </div>
                                 <div class="form-group col-md-6">
-                                    <label>Icono | <a href="https://fontawesome.com/search?q=institution&o=r&m=free" target="_blank"> ver aquí</a></label>
-                                    <input type="text" name="icono_enlace" class="form-control" placeholder="" required title="Campo requerido, debe contener un icono de FontAwesome">
+                                    <label>Icono </label>
+                                    <input type="file"  accept="image/*" name="icono_enlace" class="form-control" placeholder="" required title="Campo requerido, debe contener un icono de FontAwesome">
                                 </div>
                             </div>
 
