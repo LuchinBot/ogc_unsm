@@ -178,7 +178,7 @@ $eventos = $stmt->fetchAll(PDO::FETCH_OBJ);
                             <div class="col rounded">
                                 <a href="<?= $v1->url_enlace ?>" target="_blank" style="text-transform: uppercase !important;">
                                     <div class="w-100 bg-white py-3 fw-bold text-success">
-                                        <?= $v1->icono_enlace ?>
+                                        <img src="<?= $url . $v1->icono_enlace ?>" style="width:30px" class="me-1">
                                         <span><?= $v1->titulo_enlace ?></span>
                                     </div>
                                 </a>
