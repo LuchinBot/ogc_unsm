@@ -119,7 +119,7 @@ $data = $stmt->fetchAll(PDO::FETCH_OBJ);
                     </table>
                 </div>
                 <div class="collapse" id="collapseNew">
-                    <form method="post" id="validateForm">
+                    <form method="post" id="validateForm" enctype="multipart/form-data">
                         <fieldset>
                             <div class="row">
                                 <div class="form-group col-md-6">
