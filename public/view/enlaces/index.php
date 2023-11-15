@@ -5,26 +5,43 @@ include "../../layouts/header_admin.php";
 
 if (isset($_POST['add'])) {
     $a = $_POST['titulo_enlace'];
-    $b = $_POST['icono_enlace'];
     $c = $_POST['url_enlace'];
 
-    $stmt = $base->prepare('INSERT INTO enlace(titulo_enlace,icono_enlace,url_enlace) values(?,?,?)');
-    $result = $stmt->execute(array($a, $b, $c));
-    $result = $stmt->fetch(PDO::FETCH_ASSOC);
-    echo '<script type="text/javascript">window.location="' . $url . 'public/view/' . $title_page . '";</script>';
+    if ($_FILES['icono_enlace']['name'] != "") {
 
+        $imagen = "../../../src/img/uploads/" . $_FILES['icono_enlace']['name'];
+        $b = "src/img/uploads/" . $_FILES['icono_enlace']['name'];
+        move_uploaded_file($_FILES['icono_enlace']['tmp_name'], $imagen);
+
+        $stmt = $base->prepare('INSERT INTO enlace(titulo_enlace,icono_enlace,url_enlace) values(?,?,?)');
+        $result = $stmt->execute(array($a, $b, $c));
+        $result = $stmt->fetch(PDO::FETCH_ASSOC);
+        echo '<script type="text/javascript">window.location="' . $url . 'public/view/' . $title_page . '";</script>';
+    }
 }
 if (isset($_POST['edit'])) {
     $id = $_POST['idenlace'];
     $a = $_POST['titulo_enlace'];
-    $b = $_POST['icono_enlace'];
     $c = $_POST['url_enlace'];
 
-    $stmt = $base->prepare('UPDATE enlace SET titulo_enlace =?,icono_enlace=?,url_enlace=? where idenlace = ?');
-    $result = $stmt->execute(array($a, $b, $c, $id));
-    $result = $stmt->fetch(PDO::FETCH_ASSOC);
+    if ($_FILES['icono_enlace']['name'] != "") {
+        $imagen = "../../../src/img/uploads/" . $_FILES['icono_enlace']['name'];
+        $b = "src/img/uploads/" . $_FILES['icono_enlace']['name'];
+        move_uploaded_file($_FILES['icono_enlace']['tmp_name'], $imagen);
 
-    echo '<script type="text/javascript">window.location="' . $url . 'public/view/enlaces";</script>';
+        $stmt = $base->prepare('UPDATE enlace SET titulo_enlace =?,icono_enlace=?,url_enlace=? where idenlace = ?');
+        $result = $stmt->execute(array($a, $b, $c, $id));
+        $result = $stmt->fetch(PDO::FETCH_ASSOC);
+        echo '<script type="text/javascript">window.location="' . $url . 'public/view/enlaces";</script>';
+
+    }else{
+        $stmt = $base->prepare('UPDATE enlace SET titulo_enlace =?,url_enlace=? where idenlace = ?');
+        $result = $stmt->execute(array($a,$c, $id));
+        $result = $stmt->fetch(PDO::FETCH_ASSOC);
+        echo '<script type="text/javascript">window.location="' . $url . 'public/view/enlaces";</script>';
+
+    }
+
 }
 
 $stmt = $base->prepare('SELECT * from enlace');
@@ -85,7 +102,7 @@ $data = $stmt->fetchAll(PDO::FETCH_OBJ);
                             foreach ($data as $v1) : ?>
                                 <tr>
                                     <td class="text-center"><?= $count ?></td>
-                                    <td class="text-center"><?= $v1->icono_enlace ?></td>
+                                                                        <td class="text-center img-table"><img src="<?= $url . $v1->icono_enlace ?>" style="width:40px"></td>
                                     <td><?= $v1->titulo_enlace ?></td>
                                     <td class="text-center">
                                         <button type="button" class="btn btn-primary btn-id" data-bs-toggle="modal" data-bs-target="#ModalEdit" id="<?= $v1->idenlace ?>"><i class="fa-solid fa-pen-to-square"></i></button>
