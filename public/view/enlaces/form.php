@@ -23,7 +23,7 @@ if (isset($_GET['id'])) {
                 </div>
                 <div class="form-group col-md-6">
                     <label>Icono: <a href="https://fontawesome.com/search?q=institution&o=r&m=free" target="_blank">Ver aquí</a></label>
-                    <input type="text" name="icono_enlace" class="form-control" value='<?= $data['icono_enlace'] ?>' required>
+                    <input type="file" accept="image/*" name="icono_enlace" class="form-control">
                 </div>
             </div>
 
