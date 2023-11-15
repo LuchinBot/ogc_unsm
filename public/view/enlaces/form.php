@@ -13,7 +13,7 @@ if (isset($_GET['id'])) {
 
 
 ?>
-    <form class="" method="post">
+    <form method="post" id="validateForm" enctype="multipart/form-data">
         <div class="modal-body">
             <input class="form-control" name="idenlace" type="text" value="<?= $data['idenlace'] ?>" hidden>
             <div class="row">
