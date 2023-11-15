@@ -13,7 +13,7 @@ if (isset($_GET['ver'])) {
     $datetime = new DateTime($data['post_noticia']);
     $fecha_formateada = $datetime->format('j \d\e F \d\e Y \a \l\a\s H:i:s');
 
-    $stmt = $base->prepare('select * from noticia where estado_noticia=1');
+    $stmt = $base->prepare('select * from noticia where estado_noticia=1 order by idnoticia desc limit 10');
     $data2 = $stmt->execute();
     $data2 = $stmt->fetchAll(PDO::FETCH_OBJ);
 

@@ -20,7 +20,7 @@ $data2 = $stmt->fetchAll(PDO::FETCH_OBJ);
 <div class="container d-flex py-4">
     <div class="col d-flex">
         <div class="col-9 pe-5">
-            <?php foreach ($data as $v) : ?>
+            <?php foreach ($data2 as $v) : ?>
                 <div class="col-12 mb-3" style="box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;">
                     <a href="evento?ver=<?=$v->idevento?>&title=<?=$v->titulo_evento?>" class="d-flex noticia-large">
                         <?php
@@ -41,7 +41,7 @@ $data2 = $stmt->fetchAll(PDO::FETCH_OBJ);
             <div class="position-relative">
                 <h4 class="pb-2 fw-bold bb-title">Eventos antiguos</h4>
             </div>
-            <?php foreach ($data2 as $v) : ?>
+            <?php foreach ($data as $v) : ?>
                 <div class="col mt-3" style="position: relative;">
                     <a href="" class="d-flex noticia-mini pb-2 border-bottom">
                         <div class="noticia-img" style="background: url('<?= $url . $v->imagen_evento ?>') center center no-repeat;background-size: cover;">

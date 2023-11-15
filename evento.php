@@ -12,13 +12,14 @@ if (isset($_GET['ver'])) {
     $datetime = new DateTime($data['post_evento']);
     $fecha_formateada = $datetime->format('j \d\e F \d\e Y \a \l\a\s H:i:s');
 
-    $stmt = $base->prepare('select * from evento where estado_evento=1');
+    $stmt = $base->prepare('select * from evento where estado_evento=1 order by idevento desc limit 10');
     $data2 = $stmt->execute();
     $data2 = $stmt->fetchAll(PDO::FETCH_OBJ);
 
     $stmt = $base->prepare('select * from galeria where idevento=?');
     $galeria = $stmt->execute(array($_GET['ver']));
     $galeria = $stmt->fetchAll(PDO::FETCH_OBJ);
+
 
 ?>
     <?php include "public/layouts/navbar.php"; ?>
