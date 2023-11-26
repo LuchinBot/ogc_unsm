@@ -52,58 +52,96 @@
             </a>
           </li>
           <li class="nav-item">
-            <a href="<?= $url ?>public/view/nosotros" class="nav-link">
-              <i class="nav-icon fa fa-institution"></i>
+            <a href="#" class="nav-link active">
+              <i class="nav-icon fa-solid fa-address-card"></i>
+              <p style="font-weight: 400;">
+                Datos generales
+                <i class="right fa fa-angle-left"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="<?= $url ?>public/view/nosotros" class="nav-link">
+                  <i class="nav-icon fa fa-institution"></i>
+                  <p>
+                    Nosotros
+                  </p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="<?= $url ?>public/view/personal" class="nav-link">
+                  <i class="nav-icon fa fa-users"></i>
+                  <p>
+                    Personal
+                  </p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="<?= $url ?>public/view/carrusel" class="nav-link">
+                  <i class="nav-icon fa fa-image"></i>
+                  <p>
+                    Carrusel principal
+                  </p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="<?= $url ?>public/view/enlaces" class="nav-link">
+                  <i class="nav-icon fa fa-link"></i>
+                  <p>
+                    Enlaces de interes
+                  </p>
+                </a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-item">
+            <a href="#" class="nav-link active">
+              <i class="nav-icon fa-solid fa-globe"></i>
+              <p style="font-weight: 400;">
+                Publicaciones
+                <i class="right fa fa-angle-left"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="<?= $url ?>public/view/noticias" class="nav-link">
+                  <i class="nav-icon fa fa-newspaper"></i>
+                  <p>
+                    Noticias
+                  </p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="<?= $url ?>public/view/eventos" class="nav-link">
+                  <i class="nav-icon fa fa-calendar-days"></i>
+                  <p>
+                    Eventos
+                  </p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="<?= $url ?>public/view/galeria" class="nav-link">
+                  <i class="nav-icon fa-solid fa-photo-film"></i>
+                  <p>
+                    Galería de Eventos
+                  </p>
+                </a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-item">
+            <a href="<?= $url ?>public/view/documentos" class="nav-link">
+              <i class="nav-icon fa-solid fa-file-lines"></i>
               <p>
-                Nosotros generales
+                Documentos generales
               </p>
             </a>
           </li>
           <li class="nav-item">
-            <a href="<?= $url ?>public/view/personal" class="nav-link">
-              <i class="nav-icon fa fa-users"></i>
+            <a href="<?= $url ?>public/view/comites-calidad" class="nav-link">
+              <i class="nav-icon fa-solid fa-people-group"></i>
               <p>
-                Nuestro Personal
-              </p>
-            </a>
-          </li>
-          <li class="nav-item">
-            <a href="<?= $url ?>public/view/carrusel" class="nav-link">
-              <i class="nav-icon fa fa-image"></i>
-              <p>
-                Carrusel principal
-              </p>
-            </a>
-          </li>
-          <li class="nav-item">
-            <a href="<?= $url ?>public/view/noticias" class="nav-link">
-              <i class="nav-icon fa fa-newspaper"></i>
-              <p>
-                Nuestras noticias
-              </p>
-            </a>
-          </li>
-          <li class="nav-item">
-            <a href="<?= $url ?>public/view/eventos" class="nav-link">
-              <i class="nav-icon fa fa-calendar-days"></i>
-              <p>
-                Nuestros eventos
-              </p>
-            </a>
-          </li>
-          <li class="nav-item">
-            <a href="<?= $url ?>public/view/galeria" class="nav-link">
-              <i class="nav-icon fa-solid fa-photo-film"></i>
-              <p>
-                Nuestra Galería
-              </p>
-            </a>
-          </li>
-          <li class="nav-item">
-            <a href="<?= $url ?>public/view/enlaces" class="nav-link">
-              <i class="nav-icon fa fa-link"></i>
-              <p>
-                Nuestros Enlaces
+                Comites de Calidad
               </p>
             </a>
           </li>
@@ -135,60 +173,82 @@
             </a>
           </li>
           <li class="nav-item">
-            <a href="<?= $url ?>public/view/nosotros" class="nav-link">
-              <i class="nav-icon fa fa-institution"></i>
-              <p>
-                Nosotros generales
+            <a href="#" class="nav-link active">
+              <i class="nav-icon fa-solid fa-address-card"></i>
+              <p style="font-weight: 400;">
+                Datos generales
+                <i class="right fa fa-angle-left"></i>
               </p>
             </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="<?= $url ?>public/view/nosotros" class="nav-link">
+                  <i class="nav-icon fa fa-institution"></i>
+                  <p>
+                    Nosotros
+                  </p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="<?= $url ?>public/view/personal" class="nav-link">
+                  <i class="nav-icon fa fa-users"></i>
+                  <p>
+                    Personal
+                  </p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="<?= $url ?>public/view/carrusel" class="nav-link">
+                  <i class="nav-icon fa fa-image"></i>
+                  <p>
+                    Carrusel principal
+                  </p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="<?= $url ?>public/view/enlaces" class="nav-link">
+                  <i class="nav-icon fa fa-link"></i>
+                  <p>
+                    Enlaces de interes
+                  </p>
+                </a>
+              </li>
+            </ul>
           </li>
           <li class="nav-item">
-            <a href="<?= $url ?>public/view/personal" class="nav-link">
-              <i class="nav-icon fa fa-users"></i>
-              <p>
-                Nuestro Personal
+            <a href="#" class="nav-link active">
+              <i class="nav-icon fa-solid fa-globe"></i>
+              <p style="font-weight: 400;">
+                Publicaciones
+                <i class="right fa fa-angle-left"></i>
               </p>
             </a>
-          </li>
-          <li class="nav-item">
-            <a href="<?= $url ?>public/view/carrusel" class="nav-link">
-              <i class="nav-icon fa fa-image"></i>
-              <p>
-                Carrusel principal
-              </p>
-            </a>
-          </li>
-          <li class="nav-item">
-            <a href="<?= $url ?>public/view/noticias" class="nav-link">
-              <i class="nav-icon fa fa-newspaper"></i>
-              <p>
-                Nuestras noticias
-              </p>
-            </a>
-          </li>
-          <li class="nav-item">
-            <a href="<?= $url ?>public/view/eventos" class="nav-link">
-              <i class="nav-icon fa fa-calendar-days"></i>
-              <p>
-                Nuestros eventos
-              </p>
-            </a>
-          </li>
-          <li class="nav-item">
-            <a href="<?= $url ?>public/view/galeria" class="nav-link">
-              <i class="nav-icon fa-solid fa-photo-film"></i>
-              <p>
-                Nuestra Galería
-              </p>
-            </a>
-          </li>
-          <li class="nav-item">
-            <a href="<?= $url ?>public/view/enlaces" class="nav-link">
-              <i class="nav-icon fa fa-link"></i>
-              <p>
-                Nuestros Enlaces
-              </p>
-            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="<?= $url ?>public/view/noticias" class="nav-link">
+                  <i class="nav-icon fa fa-newspaper"></i>
+                  <p>
+                    Noticias
+                  </p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="<?= $url ?>public/view/eventos" class="nav-link">
+                  <i class="nav-icon fa fa-calendar-days"></i>
+                  <p>
+                    Eventos
+                  </p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="<?= $url ?>public/view/galeria" class="nav-link">
+                  <i class="nav-icon fa-solid fa-photo-film"></i>
+                  <p>
+                    Galería de Eventos
+                  </p>
+                </a>
+              </li>
+            </ul>
           </li>
         <?php } ?>
 

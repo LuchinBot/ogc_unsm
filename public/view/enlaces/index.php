@@ -102,7 +102,7 @@ $data = $stmt->fetchAll(PDO::FETCH_OBJ);
                             foreach ($data as $v1) : ?>
                                 <tr>
                                     <td class="text-center"><?= $count ?></td>
-                                                                        <td class="text-center img-table"><img src="<?= $url . $v1->icono_enlace ?>" style="width:40px"></td>
+                                    <td class="text-center"><?= $v1->icono_enlace ?></td>
                                     <td><?= $v1->titulo_enlace ?></td>
                                     <td class="text-center">
                                         <button type="button" class="btn btn-primary btn-id" data-bs-toggle="modal" data-bs-target="#ModalEdit" id="<?= $v1->idenlace ?>"><i class="fa-solid fa-pen-to-square"></i></button>
@@ -119,7 +119,7 @@ $data = $stmt->fetchAll(PDO::FETCH_OBJ);
                     </table>
                 </div>
                 <div class="collapse" id="collapseNew">
-                    <form method="post" id="validateForm" enctype="multipart/form-data">
+                    <form method="post" id="validateForm">
                         <fieldset>
                             <div class="row">
                                 <div class="form-group col-md-6">

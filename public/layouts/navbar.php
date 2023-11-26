@@ -50,6 +50,9 @@
                     <a class="nav-link <?= $active3 ?>" href="<?= $url ?>personal">Personal</a>
                 </li>
                 <li class="nav-item position-relative me-2">
+                    <a class="nav-link <?= $active3 ?>" href="<?= $url ?>personal">Personal</a>
+                </li>
+                <li class="nav-item position-relative me-2">
                     <a class="nav-link <?= $active4 ?>" href="<?= $url ?>noticias">Noticias</a>
                 </li>
                 <?php
@@ -64,12 +67,24 @@
                     </a>
                     <ul class="dropdown-menu w-100">
                         <?php foreach ($evento as $v) : ?>
-                            <li class="w-100"><a class="dropdown-item text-truncate" href="<?=$url?>evento?ver=<?=$v->idevento?>&title=<?=$v->titulo_evento?>"><?=$v->titulo_evento?></a></li>
+                            <li class="w-100"><a class="dropdown-item text-truncate" href="<?= $url ?>evento?ver=<?= $v->idevento ?>&title=<?= $v->titulo_evento ?>"><?= $v->titulo_evento ?></a></li>
                         <?php endforeach; ?>
                         <li>
                             <hr class="dropdown-divider">
                         </li>
-                        <li><a class="dropdown-item" href="<?=$url?>eventos">Ver todos</a></li>
+                        <li><a class="dropdown-item" href="<?= $url ?>eventos">Ver todos</a></li>
+                    </ul>
+                </li>
+                <li class="nav-item position-relative me-2 dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        Calidad
+                    </a>
+                    <ul class="dropdown-menu" style="width: 200px;">
+                        <li class="w-100"><a class="dropdown-item text-truncate" href="<?= $url ?>comites-calidad">Comités de Calidad</a></li>
+                        <li>
+                            <hr class="dropdown-divider">
+                        </li>
+                        <li class="w-100"><a class="dropdown-item text-truncate" href="<?= $url ?>documentos">Documentos</a></li>
                     </ul>
                 </li>
             </ul>
