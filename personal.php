@@ -28,7 +28,7 @@ $data2 = $stmt->fetch(PDO::FETCH_ASSOC);
                             <div class="personal p-3 bg-white">
                                 <div class="profile">
                                     <img src="<?= $url . $v1->foto ?>" class="bg-white">
-                                    <p style="overflow-wrap: anywhere;"><?= $v1->nombres . ' ' . $v1->apellidos ?></p>
+                                    <p style="overflow-wrap: anywhere; text-transform: capitalize;"><?= $v1->nombres . ' ' . $v1->apellidos ?></p>
                                     <span><?= $v1->descripcion ?></span>
                                 </div>
                                 <div class="social">
