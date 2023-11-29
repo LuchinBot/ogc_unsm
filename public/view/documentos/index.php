@@ -45,7 +45,7 @@ inner join tipo_documento as td on (td.idtipo_documento=gd.idtipo_documento)');
 $data = $stmt->execute();
 $data = $stmt->fetchAll(PDO::FETCH_OBJ);
 
-$stmt = $base->prepare('SELECT * from grupo_documento as gd inner join tipo_documento as td on (td.idtipo_documento=gd.idgrupo_documento)');
+$stmt = $base->prepare('SELECT * from grupo_documento as gd left join tipo_documento as td on (td.idtipo_documento=gd.idgrupo_documento)');
 $data2 = $stmt->execute();
 $data2 = $stmt->fetchAll(PDO::FETCH_OBJ);
 
