@@ -50,9 +50,6 @@
                     <a class="nav-link <?= $active3 ?>" href="<?= $url ?>personal">Personal</a>
                 </li>
                 <li class="nav-item position-relative me-2">
-                    <a class="nav-link <?= $active3 ?>" href="<?= $url ?>personal">Personal</a>
-                </li>
-                <li class="nav-item position-relative me-2">
                     <a class="nav-link <?= $active4 ?>" href="<?= $url ?>noticias">Noticias</a>
                 </li>
                 <?php
