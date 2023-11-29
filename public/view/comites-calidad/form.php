@@ -64,10 +64,14 @@ if (isset($_GET['id'])) {
                         <input class="form-control" accept="application/pdf" name="pdf_programa" type="file" id="formFile2" title="Campo requerido, debe contener un pdf">
                     </div>
                 </div>
+                <div class="form-group col-6">
+                    <label>Resolucion</label>
+                    <input type="text" name="resolucion_programa" class="form-control" value="<?= $data['resolucion_programa'] ?>" required title="Campo requerido, debe contener la resolucion del programa">
+                </div>
             </div>
             <div class="row">
-                <div class="form-group col-4">
-                    <label>Persona Natural</label>
+                <div class="form-group col-3">
+                    <label>Representante</label>
                     <select class="select2" name="idpersona_natural" style="width: 100%;" required title="Campo requerido">
                         <?php foreach ($data4 as $v2) {
                             if ($v2->idpersona_natural == $data['idpersona_natural']) { ?>
@@ -78,77 +82,21 @@ if (isset($_GET['id'])) {
                         }; ?>
                     </select>
                 </div>
-                <div class="col-4 form-group">
-                    <label>CUI</label>
+                <div class="col-3 form-group">
+                    <label>Cargo</label>
                     <input type="text" name="cui_programa" class="form-control" value="<?= $data['cui_programa'] ?>" required title="Campo requerido, debe contener el CUI del programa">
                 </div>
-                <div class="col-4 form-group">
-                    <label>Reporte</label>
-                    <input type="text" name="reportes_programa" class="form-control" value="<?= $data['reportes_programa'] ?>" required title="Campo requerido, debe contener el reporte del programa">
+                <div class="col-3 form-group">
+                    <label>Email</label>
+                    <input type="email" name="reportes_programa" class="form-control" value="<?= $data['reportes_programa'] ?>" required title="Campo requerido, debe contener el reporte del programa">
+                </div>
+                <div class="form-group col-3">
+                    <label>Teléfono</label>
+                    <input type="phone" name="observacion_programa" class="form-control" title="Campo requerido, debe contener el telefono del programa" value="<?= $data['observacion_programa'] ?>">
                 </div>
             </div>
-            <div class="row p-3">
-                <div class="col-3">
-                    <div class="form-check form-switch">
-                        <input class="form-check-input" type="checkbox" role="switch" name="2021_1_programa" id="flexSwitchCheckChecked1" <?php if ($data['a2021_1_programa'] == 'on') {
-                                                                                                                                                echo 'checked';
-                                                                                                                                            } ?>>
-                        <label class="form-check-label" for="flexSwitchCheckChecked1">Reporte 2021-1</label>
-                    </div>
-                    <div class="form-check form-switch">
-                        <input class="form-check-input" type="checkbox" role="switch" name="2021_2_programa" id="flexSwitchCheckChecked2" <?php if ($data['a2021_2_programa'] == 'on') {
-                                                                                                                                                echo 'checked';
-                                                                                                                                            } ?>>
-                        <label class="form-check-label" for="flexSwitchCheckChecked2">Reporte 2021-2</label>
-                    </div>
-                </div>
-                <div class="col-3">
-                    <div class="form-check form-switch">
-                        <input class="form-check-input" type="checkbox" role="switch" name="2022_1_programa" id="flexSwitchCheckChecked3" <?php if ($data['a2022_1_programa'] == 'on') {
-                                                                                                                                                echo 'checked';
-                                                                                                                                            } ?>>
-                        <label class="form-check-label" for="flexSwitchCheckChecked3">Reporte 2022-1</label>
-                    </div>
-                    <div class="form-check form-switch">
-                        <input class="form-check-input" type="checkbox" role="switch" name="2022_2_programa" id="flexSwitchCheckChecked4" <?php if ($data['a2022_2_programa'] == 'on') {
-                                                                                                                                                echo 'checked';
-                                                                                                                                            } ?>>
-                        <label class="form-check-label" for="flexSwitchCheckChecked4">Reporte 2022-2</label>
-                    </div>
-                </div>
-                <div class="col-3">
-                    <div class="form-check form-switch">
-                        <input class="form-check-input" type="checkbox" role="switch" name="2023_1_programa" id="flexSwitchCheckChecked5" <?php if ($data['a2023_1_programa'] == 'on') {
-                                                                                                                                                echo 'checked';
-                                                                                                                                            } ?>>
-                        <label class="form-check-label" for="flexSwitchCheckChecked5">Reporte 2023-1</label>
-                    </div>
-                    <div class="form-check form-switch">
-                        <input class="form-check-input" type="checkbox" role="switch" name="2023_2_programa" id="flexSwitchCheckChecked6" <?php if ($data['a2023_2_programa'] == 'on') {
-                                                                                                                                                echo 'checked';
-                                                                                                                                            } ?>>
-                        <label class="form-check-label" for="flexSwitchCheckChecked6">Reporte 2023-2</label>
-                    </div>
-                </div>
-                <div class="col-3">
-                    <div class="form-check form-switch">
-                        <input class="form-check-input" type="checkbox" role="switch" name="2024_1_programa" id="flexSwitchCheckChecked7" <?php if ($data['a2024_1_programa'] == 'on') {
-                                                                                                                                                echo 'checked';
-                                                                                                                                            } ?>>
-                        <label class="form-check-label" for="flexSwitchCheckChecked7">Reporte 2024-1</label>
-                    </div>
-                    <div class="form-check form-switch">
-                        <input class="form-check-input" type="checkbox" role="switch" name="2024_2_programa" id="flexSwitchCheckChecked8" <?php if ($data['a2024_2_programa'] == 'on') {
-                                                                                                                                                echo 'checked';
-                                                                                                                                            } ?>>
-                        <label class="form-check-label" for="flexSwitchCheckChecked8">Reporte 2024-2</label>
-                    </div>
-                </div>
-            </div>
-            <div class="form-group">
-                <label>Observaciones</label>
-                <textarea name="observacion_programa" class="form-control" title="Campo requerido, debe contener las observaciones del programa"><?= $data['observacion_programa'] ?></textarea>
-            </div>
+
+
         </div>
         <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>

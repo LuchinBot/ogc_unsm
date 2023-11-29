@@ -40,22 +40,13 @@ if (isset($_GET['ver'])) {
                     <table class="table table-bordered border-primary w-100">
                         <thead style="background-color: #F5F5F5;">
                             <tr>
-                                <th class="text-center" rowspan="2">Programa</th>
-                                <th class="text-center" rowspan="2">Presidente</th>
-                                <th class="text-center" rowspan="2">Presidente</th>
-                                <th class="text-center" rowspan="2">Presidente</th>
-                                <th class="text-center" colspan="8">Reportes</th>
-                                <th class="text-center" rowspan="2">Observación</th>
-                            </tr>
-                            <tr>
-                                <th class="text-center">2021-1</th>
-                                <th class="text-center">2021-1</th>
-                                <th class="text-center">2021-1</th>
-                                <th class="text-center">2021-1</th>
-                                <th class="text-center">2021-1</th>
-                                <th class="text-center">2021-1</th>
-                                <th class="text-center">2021-1</th>
-                                <th class="text-center">2021-1</th>
+                                <th class="text-center">Programa</th>
+                                <th class="text-center">Responsable</th>
+                                <th class="text-center">Resolución</th>
+                                <th class="text-center">Cargo</th>
+                                <th class="text-center">DNI</th>
+                                <th class="text-center">Correo</th>
+                                <th class="text-center">Celular</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -65,19 +56,13 @@ if (isset($_GET['ver'])) {
                                     
                                     if ($i->idfacultad == $k->idfacultad && $j->idfacultad == $k->idfacultad) {?>
                                         <tr>
-                                            <td><a href="<? $url . $k->pdf_programa ?>"><?= $k->nombre_programa ?></a></td>
-                                            <td><?= $k->nombres . ' ' . $k->apellidos ?></td>
-                                            <td><?= $k->cui_programa ?></td>
-                                            <td><?= $k->reportes_programa ?></td>
-                                            <td class="text-center"><?php if($k->a2021_1_programa=='on'){ echo '<i class="fa-solid fa-check text-success"></i>';} ?></td>
-                                            <td class="text-center"><?php if($k->a2021_2_programa=='on'){ echo '<i class="fa-solid fa-check text-success"></i>';} ?></td>
-                                            <td class="text-center"><?php if($k->a2022_1_programa=='on'){ echo '<i class="fa-solid fa-check text-success"></i>';} ?></td>
-                                            <td class="text-center"><?php if($k->a2022_2_programa=='on'){ echo '<i class="fa-solid fa-check text-success"></i>';} ?></td>
-                                            <td class="text-center"><?php if($k->a2023_1_programa=='on'){ echo '<i class="fa-solid fa-check text-success"></i>';} ?></td>
-                                            <td class="text-center"><?php if($k->a2023_2_programa=='on'){ echo '<i class="fa-solid fa-check text-success"></i>';} ?></td>
-                                            <td class="text-center"><?php if($k->a2024_1_programa=='on'){ echo '<i class="fa-solid fa-check text-success"></i>';} ?></td>
-                                            <td class="text-center"><?php if($k->a2024_2_programa=='on'){ echo '<i class="fa-solid fa-check text-success"></i>';} ?></td>
-                                            <td><?= $k->observacion_programa ?></td>
+                                            <td class="text-center"><?= $k->nombres . ' ' . $k->apellidos ?></td>
+                                            <td class="text-center"><?= $k->nombre_programa ?></td>
+                                            <td class="text-center"><a href="<?= $url . $k->pdf_programa ?>"><?= $k->resolucion_programa ?></a></td>
+                                            <td class="text-center"><?= $k->cui_programa ?></td>
+                                            <td class="text-center"><?= $k->dni ?></td>
+                                            <td class="text-center"><?= $k->reportes_programa ?></td>
+                                            <td class="text-center"><?= $k->observacion_programa ?></td>
                                         </tr>
                             <?php }
                                 endforeach;

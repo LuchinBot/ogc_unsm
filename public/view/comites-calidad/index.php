@@ -11,15 +11,16 @@ if (isset($_POST['add'])) {
     //$e = $_POST['pdf_programa'];
     $f = $_POST['cui_programa'];
     $g = $_POST['reportes_programa'];
-    $h = isset($_POST['2021_1_programa']) ? 'on' : 'off';
+    /*$h = isset($_POST['2021_1_programa']) ? 'on' : 'off';
     $i =  isset($_POST['2021_2_programa']) ? 'on' : 'off';
     $j =  isset($_POST['2022_1_programa']) ? 'on' : 'off';
     $k =  isset($_POST['2022_2_programa']) ? 'on' : 'off';
     $l =  isset($_POST['2023_1_programa']) ? 'on' : 'off';
     $m =  isset($_POST['2023_2_programa']) ? 'on' : 'off';
     $n =  isset($_POST['2024_1_programa']) ? 'on' : 'off';
-    $o =  isset($_POST['2024_2_programa']) ? 'on' : 'off';
+    $o =  isset($_POST['2024_2_programa']) ? 'on' : 'off';*/
     $p = $_POST['observacion_programa'];
+    $q = $_POST['resolucion_programa'];
 
     if ($_FILES['pdf_programa']['name'] != "") {
         $imagen = "../../../src/file/" . $_FILES['pdf_programa']['name'];
@@ -27,9 +28,9 @@ if (isset($_POST['add'])) {
         move_uploaded_file($_FILES['pdf_programa']['tmp_name'], $imagen);
 
         $stmt = $base->prepare('INSERT INTO programa(idcomite,idfacultad,idpersona_natural,nombre_programa,pdf_programa,cui_programa,
-        reportes_programa,a2021_1_programa,a2021_2_programa,a2022_1_programa,a2022_2_programa,a2023_1_programa,a2023_2_programa,a2024_1_programa,a2024_2_programa,observacion_programa)
-        values(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)');
-        $result = $stmt->execute(array($a, $b, $c, $d, $e, $f, $g, $h, $i, $j, $k, $l, $m, $n, $o, $p));
+        reportes_programa,observacion_programa,resolucion_programa)
+        values(?,?,?,?,?,?,?,?,?)');
+        $result = $stmt->execute(array($a, $b, $c, $d, $e, $f, $g, $p,$q));
         $result = $stmt->fetch(PDO::FETCH_ASSOC);
         echo '<script type="text/javascript">window.location="' . $url . 'public/view/comites-calidad";</script>';
     }
@@ -43,33 +44,30 @@ if (isset($_POST['edit'])) {
     //$e = $_POST['pdf_programa'];
     $f = $_POST['cui_programa'];
     $g = $_POST['reportes_programa'];
-    $h = isset($_POST['2021_1_programa']) ? 'on' : 'off';
+    /*$h = isset($_POST['2021_1_programa']) ? 'on' : 'off';
     $i =  isset($_POST['2021_2_programa']) ? 'on' : 'off';
     $j =  isset($_POST['2022_1_programa']) ? 'on' : 'off';
     $k =  isset($_POST['2022_2_programa']) ? 'on' : 'off';
     $l =  isset($_POST['2023_1_programa']) ? 'on' : 'off';
     $m =  isset($_POST['2023_2_programa']) ? 'on' : 'off';
     $n =  isset($_POST['2024_1_programa']) ? 'on' : 'off';
-    $o =  isset($_POST['2024_2_programa']) ? 'on' : 'off';
+    $o =  isset($_POST['2024_2_programa']) ? 'on' : 'off';*/
     $p = $_POST['observacion_programa'];
-
-
+    $q = $_POST['resolucion_programa'];
 
     if ($_FILES['pdf_programa']['name'] != "") {
-        $imagen = "../../../src/img/uploads/" . $_FILES['pdf_programa']['name'];
-        $e = "src/img/uploads/" . $_FILES['pdf_programa']['name'];
+        $imagen = "../../../src/file/" . $_FILES['pdf_programa']['name'];
+        $e = "src/file//" . $_FILES['pdf_programa']['name'];
         move_uploaded_file($_FILES['pdf_programa']['tmp_name'], $imagen);
 
         $stmt = $base->prepare('UPDATE programa SET idcomite =?,idfacultad=?,idpersona_natural=?,nombre_programa=?,
-        pdf_programa=?, cui_programa=?,reportes_programa=?,a2021_1_programa=?,a2021_2_programa=?,a2022_1_programa=?,a2022_2_programa=?,
-        a2023_1_programa=?,a2023_2_programa=,a2024_1_programa=?,a2024_2_programa=?,observacion_programa=? where idprograma = ?');
-        $result = $stmt->execute(array($a, $b, $c, $d, $e, $f, $g, $h, $i, $j, $k, $l, $m, $n, $o, $p,$id));
+        pdf_programa=?, cui_programa=?,reportes_programa=?,observacion_programa=?,resolucion_programa=? where idprograma = ?');
+        $result = $stmt->execute(array($a, $b, $c, $d, $e, $f, $g, $p,$q, $id));
         $result = $stmt->fetch(PDO::FETCH_ASSOC);
     } else {
         $stmt = $base->prepare('UPDATE programa SET idcomite =?,idfacultad=?,idpersona_natural=?,nombre_programa=?,
-        cui_programa=?,reportes_programa=?,a2021_1_programa=?,a2021_2_programa=?,a2022_1_programa=?,a2022_2_programa=?,
-        a2023_1_programa=?,a2023_2_programa=?,a2024_1_programa=?,a2024_2_programa=?,observacion_programa=? where idprograma = ?');
-        $result = $stmt->execute(array($a, $b, $c, $d, $f, $g, $h, $i, $j, $k, $l, $m, $n, $o, $p,$id));
+        cui_programa=?,reportes_programa=?,observacion_programa=?,resolucion_programa=? where idprograma = ?');
+        $result = $stmt->execute(array($a, $b, $c, $d, $f, $g, $p,$q, $id));
         $result = $stmt->fetch(PDO::FETCH_ASSOC);
     }
     echo '<script type="text/javascript">window.location="' . $url . 'public/view/comites-calidad";</script>';
@@ -183,81 +181,44 @@ $data4 = $stmt->fetchAll(PDO::FETCH_OBJ);
                                 </div>
                             </div>
                             <div class="row">
-                                <div class="form-group col-6">
+                                <div class="form-group col-4">
                                     <label>Nombre del programa</label>
                                     <input type="text" name="nombre_programa" class="form-control" placeholder="" required title="Campo requerido, debe contener el nombre del programa">
                                 </div>
-                                <div class="form-group col-6">
+                                <div class="form-group col-4">
                                     <div class="mb-3">
                                         <label for="formFile2" class="form-label">PDF del programa</label>
                                         <input class="form-control" accept="application/pdf" name="pdf_programa" type="file" id="formFile2" required title="Campo requerido, debe contener un pdf">
                                     </div>
                                 </div>
+                                <div class="form-group col-4">
+                                    <label>Resolución</label>
+                                    <input type="text" name="resolucion_programa" class="form-control" placeholder="" required title="Campo requerido, debe contener la resolución del programa">
+                                </div>
                             </div>
                             <div class="row">
-                                <div class="form-group col-4">
-                                    <label>Persona Natural</label>
+                                <div class="form-group col-3">
+                                    <label>Representante</label>
                                     <select class="select2" name="idpersona_natural" style="width: 100%;" required title="Campo requerido">
                                         <?php foreach ($data4 as $v2) : ?>
                                             <option value="<?= $v2->idpersona_natural ?>"><?= $v2->dni . ' - ' . $v2->nombres . ' ' . $v2->apellidos ?></option>
                                         <?php endforeach; ?>
                                     </select>
                                 </div>
-                                <div class="col-4 form-group">
-                                    <label>CUI</label>
-                                    <input type="text" name="cui_programa" class="form-control" placeholder="" required title="Campo requerido, debe contener el CUI del programa">
+                                <div class="col-3 form-group">
+                                    <label>Cargo</label>
+                                    <input type="text" name="cui_programa" class="form-control" placeholder="" required title="Campo requerido, debe contener el Cargo del representante">
                                 </div>
-                                <div class="col-4 form-group">
-                                    <label>Reporte</label>
-                                    <input type="text" name="reportes_programa" class="form-control" placeholder="" required title="Campo requerido, debe contener el reporte del programa">
+                                <div class="col-3 form-group">
+                                    <label>Email</label>
+                                    <input type="email" name="reportes_programa" class="form-control" placeholder="" required title="Campo requerido, debe contener el email del representante">
                                 </div>
-                            </div>
-                            <div class="row p-3">
-                                <div class="col-3">
-                                    <div class="form-check form-switch">
-                                        <input class="form-check-input" type="checkbox" role="switch" name="2021_1_programa" id="flexSwitchCheckChecked1" checked>
-                                        <label class="form-check-label" for="flexSwitchCheckChecked1">Reporte 2021-1</label>
-                                    </div>
-                                    <div class="form-check form-switch">
-                                        <input class="form-check-input" type="checkbox" role="switch" name="2021_2_programa" id="flexSwitchCheckChecked2" checked>
-                                        <label class="form-check-label" for="flexSwitchCheckChecked2">Reporte 2021-2</label>
-                                    </div>
-                                </div>
-                                <div class="col-3">
-                                    <div class="form-check form-switch">
-                                        <input class="form-check-input" type="checkbox" role="switch" name="2022_1_programa" id="flexSwitchCheckChecked3" checked>
-                                        <label class="form-check-label" for="flexSwitchCheckChecked3">Reporte 2022-1</label>
-                                    </div>
-                                    <div class="form-check form-switch">
-                                        <input class="form-check-input" type="checkbox" role="switch" name="2022_2_programa" id="flexSwitchCheckChecked4" checked>
-                                        <label class="form-check-label" for="flexSwitchCheckChecked4">Reporte 2022-2</label>
-                                    </div>
-                                </div>
-                                <div class="col-3">
-                                    <div class="form-check form-switch">
-                                        <input class="form-check-input" type="checkbox" role="switch" name="2023_1_programa" id="flexSwitchCheckChecked5" checked>
-                                        <label class="form-check-label" for="flexSwitchCheckChecked5">Reporte 2023-1</label>
-                                    </div>
-                                    <div class="form-check form-switch">
-                                        <input class="form-check-input" type="checkbox" role="switch" name="2023_2_programa" id="flexSwitchCheckChecked6" checked>
-                                        <label class="form-check-label" for="flexSwitchCheckChecked6">Reporte 2023-2</label>
-                                    </div>
-                                </div>
-                                <div class="col-3">
-                                    <div class="form-check form-switch">
-                                        <input class="form-check-input" type="checkbox" role="switch" name="2024_1_programa" id="flexSwitchCheckChecked7" checked>
-                                        <label class="form-check-label" for="flexSwitchCheckChecked7">Reporte 2024-1</label>
-                                    </div>
-                                    <div class="form-check form-switch">
-                                        <input class="form-check-input" type="checkbox" role="switch" name="2024_2_programa" id="flexSwitchCheckChecked8" checked>
-                                        <label class="form-check-label" for="flexSwitchCheckChecked8">Reporte 2024-2</label>
-                                    </div>
+                                <div class="form-group col-3">
+                                    <label>Teléfono</label>
+                                    <input type="phone" name="observacion_programa" class="form-control" placeholder="" title="Campo requerido, debe contener el teléfono del representante">
                                 </div>
                             </div>
-                            <div class="form-group">
-                                <label>Observaciones</label>
-                                <textarea name="observacion_programa" class="form-control" placeholder="" title="Campo requerido, debe contener las observaciones del programa"></textarea>
-                            </div>
+
                             <button type="submit" name="add" class="btn btn-success px-3 fw-bolder"><i class="fa-solid fa-rotate me-1"></i> Actualizar <?= $title_page ?></button>
                         </fieldset>
                     </form>

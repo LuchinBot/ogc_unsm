@@ -52,6 +52,22 @@
             </a>
           </li>
           <li class="nav-item">
+            <a href="<?= $url ?>public/view/documentos" class="nav-link">
+              <i class="nav-icon fa-solid fa-file-lines"></i>
+              <p>
+                Documentos generales
+              </p>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="<?= $url ?>public/view/comites-calidad" class="nav-link">
+              <i class="nav-icon fa-solid fa-people-group"></i>
+              <p>
+                Comites de Calidad
+              </p>
+            </a>
+          </li>
+          <li class="nav-item">
             <a href="#" class="nav-link active">
               <i class="nav-icon fa-solid fa-address-card"></i>
               <p style="font-weight: 400;">
@@ -130,22 +146,6 @@
             </ul>
           </li>
           <li class="nav-item">
-            <a href="<?= $url ?>public/view/documentos" class="nav-link">
-              <i class="nav-icon fa-solid fa-file-lines"></i>
-              <p>
-                Documentos generales
-              </p>
-            </a>
-          </li>
-          <li class="nav-item">
-            <a href="<?= $url ?>public/view/comites-calidad" class="nav-link">
-              <i class="nav-icon fa-solid fa-people-group"></i>
-              <p>
-                Comites de Calidad
-              </p>
-            </a>
-          </li>
-          <li class="nav-item">
             <a href="#" class="nav-link active">
               <i class="nav-icon fas fa-gear"></i>
               <p style="font-weight: 400;">
@@ -169,6 +169,22 @@
               <i class="nav-icon fa fa-home"></i>
               <p>
                 Ventana principal
+              </p>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="<?= $url ?>public/view/documentos" class="nav-link">
+              <i class="nav-icon fa-solid fa-file-lines"></i>
+              <p>
+                Documentos generales
+              </p>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="<?= $url ?>public/view/comites-calidad" class="nav-link">
+              <i class="nav-icon fa-solid fa-people-group"></i>
+              <p>
+                Comites de Calidad
               </p>
             </a>
           </li>
