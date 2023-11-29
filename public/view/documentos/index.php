@@ -76,7 +76,7 @@ $data2 = $stmt->fetchAll(PDO::FETCH_OBJ);
             <p class="text-secondary bg-dark border-bottom px-4 py-2">
                 <i class="fa fa-info-circle text-warning"></i>
                 Todos los cambios los puedes verificar
-                <a href="<?= $url ?>personal" target="_blank" class="font-weight-bold text-warning">aquí <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+                <a href="<?= $url ?>documentos" target="_blank" class="font-weight-bold text-warning">aquí <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
             </p>
             <div class="d-flex justify-content-center">
                 <p>
