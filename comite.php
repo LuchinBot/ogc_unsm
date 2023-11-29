@@ -40,8 +40,8 @@ if (isset($_GET['ver'])) {
                     <table class="table table-bordered border-primary w-100">
                         <thead style="background-color: #F5F5F5;">
                             <tr>
-                                <th class="text-center">Programa</th>
                                 <th class="text-center">Responsable</th>
+                                <th class="text-center">Programa</th>
                                 <th class="text-center">Resolución</th>
                                 <th class="text-center">Cargo</th>
                                 <th class="text-center">DNI</th>
